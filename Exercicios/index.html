@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      main {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .conta {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        gap: 0.5em;
+        margin-bottom: 1em;
+      }
+
+      div#mensagem {
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="conta">
+        <label for="num1">Insira o primeiro número:</label>
+        <input type="number" name="num1" id="num1" />
+        <label for="num2">Insira o segundo número:</label>
+        <input type="number" name="num2" id="num2" />
+        <button onclick="Somar()">Somar</button>
+        <button onclick="Subtrair()">Subtrair</button>
+        <button onclick="Multiplicar()">Multiplicar</button>
+        <button onclick="Dividir()">Dividir</button>
+      </div>
+      <div id="mensagem"></div>
+    </main>
+  </body>
+</html>
+
+<script>
+  function Somar() {
+    mensagem.innerHTML =
+      "O resultado da soma é " + (Number(num1.value) + Number(num2.value));
+  }
+
+  function Subtrair() {
+    mensagem.innerHTML =
+      "O resultado da soma é " + (Number(num1.value) - Number(num2.value));
+  }
+
+  function Multiplicar() {
+    mensagem.innerHTML =
+      "O resultado da soma é " + Number(num1.value) * Number(num2.value);
+  }
+
+  function Dividir() {
+    mensagem.innerHTML =
+      "O resultado da soma é " +
+      (Number(num1.value) / Number(num2.value)).toFixed(2);
+  }
+</script>

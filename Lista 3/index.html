@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista 3</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <section>
+        <label for="idadeUser">Insira sua idade:</label>
+        <input required id="idadeUser" type="number" />
+        <button onclick="aposentadoriaH()">Aposentadoria Homem</button>
+        <button onclick="aposentadoriaM()">Aposentadoria Mulher</button>
+        <div id="message"></div>
+      </section>
+
+      <section>
+        <label for="valorPizza">Insira o valor da pizza:</label>
+        <input type="number" id="valorPizza" />
+        <label for="qtdAmigos">Insira a quantidade de amigos:</label>
+        <input type="number" id="qtdAmigos" />
+        <button onclick="divisaoPizza()">#lovePizza</button>
+        <div id="message2"></div>
+      </section>
+
+      <section>
+        <label for="valorPassagem">Insira o valor da passagem do ônibus:</label>
+        <input type="number" id="valorPassagem" />
+        <label for="viagensMensais"
+          >Insira o número de viagens que você fará por mês:</label
+        >
+        <input type="number" id="viagensMensais" />
+        <button onclick="economiaMensal()">Ver economia</button>
+        <div id="mensagem"></div>
+      </section>
+
+      <section>
+        <label for="pesoUser">Insira seu peso em kg:</label>
+        <input type="number" id="pesoUser" />
+        <label for="altUser">Insira sua altura em metros:</label>
+        <input type="number" id="altUser" />
+        <button onclick="calcularIMC()">Calcular IMC</button>
+        <div id="mensagem2"></div>
+      </section>
+
+      <section>
+        <label for="kiBase">Informe o ki base do seu personagem:</label>
+        <input type="number" id="kiBase" />
+        <div id="mensagem3">Transformar em...</div>
+        <button onclick="ssj()" id="superSaiyajin" value="SSJ">SSJ</button>
+        <button onclick="ssj2()" id="superSaiyajin2" value="SSJ2">SSJ2</button>
+        <button onclick="ssj3()" id="superSaiyajin3" value="SSJ3">SSJ3</button>
+        <div id="mensagem4"></div>
+      </section>
+
+      <section>
+        <label for="qtdBDollars"
+          >Informe a quantidade de B-Dollars que deseja converter:</label
+        >
+        <input type="number" id="qtdBDollars" />
+        <label for="valorCotacao"
+          >Insira o valor de cotação do B-Dollars, quanto ele vale em
+          Reais:</label
+        >
+        <input type="number" id="valorCotacao" />
+        <button onclick="converterBDollars()">Calcular Câmbio</button>
+        <div id="mensagem5"></div>
+      </section>
+    </main>
+  </body>
+</html>
+
+<script>
+  function aposentadoriaH() {
+    if (idadeUser.value <= 0) {
+      message.innerHTML = "Insira sua idade!";
+      setTimeout(() => {
+        message.innerHTML = "";
+      }, 1500);
+    } else if (idadeUser.value >= 70) {
+      message.innerHTML = "Você já se aposentou";
+    } else
+      message.innerHTML =
+        "Falta " +
+        (70 - Number(idadeUser.value)) +
+        " " +
+        "anos para você se aposentar";
+    setTimeout(() => {
+      message.innerHTML = "";
+    }, 1500);
+  }
+
+  function aposentadoriaM() {
+    if (idadeUser.value <= 0) {
+      message.innerHTML = "Insira sua idade!";
+      setTimeout(() => {
+        message.innerHTML = "";
+      }, 1500);
+    } else if (idadeUser.value >= 60) {
+      message.innerHTML = "Você já se aposentou";
+    } else
+      message.innerHTML =
+        "Falta " +
+        (60 - Number(idadeUser.value)) +
+        " " +
+        "anos para você se aposentar";
+    setTimeout(() => {
+      message.innerHTML = "";
+    }, 1500);
+  }
+
+  function divisaoPizza() {
+    if (valorPizza.value <= 0 || qtdAmigos.value <= 0) {
+      message2.innerHTML = "Insira valores válidos!";
+      setTimeout(() => {
+        message2.innerHTML = "";
+      }, 1500);
+    } else
+      message2.innerHTML =
+        "Cada um dos " +
+        qtdAmigos.value +
+        " " +
+        "amigos vai pagar R$" +
+        Number(valorPizza.value) / Number(qtdAmigos.value);
+    setTimeout(() => {
+      message2.innerHTML = "";
+    }, 1500);
+  }
+
+  function economiaMensal() {
+    if (valorPassagem.value <= 0) {
+      mensagem.innerHTML = "Insira valores válidos";
+      setTimeout(() => {
+        mensagem.innerHTML = "";
+      }, 1500);
+    } else
+      mensagem.innerHTML =
+        "Você economizará R$ " +
+        (Number(valorPassagem.value) * Number(viagensMensais.value) -
+          Number(valorPassagem.value / 2) *
+            Number(viagensMensais.value).toFixed(2)) +
+        " " +
+        "por mês";
+    setTimeout(() => {
+      mensagem.innerHTML = "";
+    }, 1500);
+  }
+
+  function calcularIMC() {
+    if (pesoUser.value <= 0 || altUser.value <= 0) {
+      mensagem2.innerHTML = "Insira valores válidos!";
+      setTimeout(() => {
+        mensagem2.innerHTML = "";
+      }, 1500);
+    } else
+      mensagem2.innerHTML =
+        "Seu IMC é igual a " +
+        (
+          Number(pesoUser.value) /
+          (Number(altUser.value) ** 2)
+        ).toFixed(2);
+    setTimeout(() => {
+      mensagem2.innerHTML = "";
+    }, 1500);
+  }
+
+  function ssj() {
+    if (kiBase.value <= 0) {
+      mensagem4.innerHTML = "Insira um valor base de Ki válido!";
+    } else
+      mensagem4.innerHTML =
+        " Após se transformar em " +
+        superSaiyajin.value +
+        " " +
+        ",o ki desse Sayajin passa a ser de " +
+        Number(kiBase.value) * 50;
+    setTimeout(() => {
+      mensagem4.innerHTML = "";
+    }, 2000);
+  }
+
+  function ssj2() {
+    if (kiBase.value <= 0) {
+      mensagem4.innerHTML = "Insira um valor base de Ki válido!";
+    } else
+      mensagem4.innerHTML =
+        " Após se transformar em " +
+        superSaiyajin2.value +
+        " " +
+        ",o ki desse Sayajin passa a ser de " +
+        Number(kiBase.value) * 100;
+    setTimeout(() => {
+      mensagem4.innerHTML = "";
+    }, 2000);
+  }
+
+  function ssj3() {
+    if (kiBase.value <= 0) {
+      mensagem4.innerHTML = "Insira um valor base de Ki válido!";
+    } else
+      mensagem4.innerHTML =
+        " Após se transformar em " +
+        superSaiyajin3.value +
+        " " +
+        ",o ki desse Sayajin passa a ser de " +
+        Number(kiBase.value) * 200;
+    setTimeout(() => {
+      mensagem4.innerHTML = "";
+    }, 2000);
+  }
+
+  function converterBDollars() {
+    if (qtdBDollars.value <= 0 || valorCotacao.value <= 0) {
+      mensagem5.innerHTML = "Insira valores válidos!";
+      setTimeout(() => {
+        mensagem5.innerHTML = "";
+      }, 1500);
+    } else
+      mensagem5.innerHTML =
+        "Ao converter seus B-Dollars, o dinheiro disponível será: R$" +
+        (Number(qtdBDollars.value) * Number(valorCotacao.value) - 5.5).toFixed(
+          2,
+        );
+    setTimeout(() => {
+      mensagem5.innerHTML = "";
+    }, 1500);
+  }
+</script>

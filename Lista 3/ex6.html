@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      Informe a quantidade de votos do candidato A:
+      <input type="number" id="qtdA" />
+      Informe a quantidade de votos do candidato B:
+      <input type="number" id="qtdB" />
+      Informe a quantidade de votos do brancos:
+      <input type="number" id="qtdBranco" />
+      Informe a quantidade de votos nulos:
+      <input type="number" id="qtdNulo" />
+      <button onclick="ResultadoEleicao()">Resultado da Eleição</button>
+      <div id="msg"></div>
+    </main>
+  </body>
+</html>
+
+<script>
+  function ResultadoEleicao() {
+    let qtdVotosA = Number(qtdA.value);
+    let qtdVotosB = Number(qtdB.value);
+    let qtdVotosBrancos = Number(qtdBranco.value);
+    let qtdVotosNulos = Number(qtdNulo.value);
+    let totalVotos = qtdVotosA + qtdVotosB + qtdVotosBrancos + qtdVotosNulos;
+    let votosInvalidos = qtdVotosBrancos + qtdVotosNulos;
+    let porcentagemVotosA = (qtdVotosA/totalVotos)*100
+    let porcentagemVotosB = (qtdVotosB/totalVotos)*100
+    let porcentagemVotosInvalidos = (votosInvalidos/totalVotos)*100
+    msg.innerHTML = `
+    Total de votos: ${totalVotos}
+    <br>
+    Candidato A: ${porcentagemVotosA.toFixed(2)}% (${qtdVotosA} votos)  
+    <br>
+    Candidato B: ${porcentagemVotosB.toFixed(2)}% (${qtdVotosB} votos)  
+    <br>
+    Inválidos: ${porcentagemVotosInvalidos.toFixed(2)}% (${votosInvalidos} votos)`;
+  }
+</script>

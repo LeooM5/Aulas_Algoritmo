@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <section>
+        <p>Primeiro Número</p>
+        <input type="number" id="num1" />
+        <p>Segundo Número</p>
+        <input type="number" id="num2" />
+        <br />
+        <br />
+        <button onclick="Multiplicar()">Multiplicar</button>
+        <button onclick="Dividir()">Dividir</button>
+        <button onclick="Somar()">Somar</button>
+        <button onclick="Subtrair()">Subtrair</button>
+        <button onclick="Exponenciacao()">Exponenciacao</button>
+        <button onclick="Radiciacao()">Radiciacao</button>
+        <button onclick="Resto()">Resto</button>
+        <div id="mensagem"></div>
+      </section>
+
+    </main>
+  </body>
+</html>
+
+<script>
+  function Multiplicar() {
+    let n1 = Number(num1.value);
+    let n2 = Number(num2.value);
+    let result = n1 * n2;
+    mensagem.innerHTML = `O valor da multiplicação de ${n1} por ${n2} é igual a ${result}`;
+  }
+
+  function Dividir() {
+    let n1 = Number(num1.value);
+    let n2 = Number(num2.value);
+    let result = n1 / n2;
+    mensagem.innerHTML = `O valor da divisão de ${n1} por ${n2} é igual a ${result}`;
+  }
+
+  function Somar() {
+    let n1 = Number(num1.value);
+    let n2 = Number(num2.value);
+    let result = n1 + n2;
+    mensagem.innerHTML = `O valor da soma de ${n1} por ${n2} é igual a ${result}`;
+  }
+
+  function Subtrair() {
+    let n1 = Number(num1.value);
+    let n2 = Number(num2.value);
+    let result = n1 - n2;
+    mensagem.innerHTML = `O valor da subtração de ${n1} por ${n2} é igual a ${result}`;
+  }
+
+  function Exponenciacao() {
+    let n1 = Number(num1.value);
+    let n2 = Number(num2.value);
+    let result = n1 ** n2;
+    mensagem.innerHTML = `O valor da raiz de ${n1} com expoente ${n2} é igual a ${result}`;
+  }
+
+  function Radiciacao() {
+    let n1 = Number(num1.value);
+    let n2 = Number(num2.value);
+    let result = n1 ** (1 / n2);
+    mensagem.innerHTML = `O valor da raiz de ${n1} com expoente ${n2} é igual a ${result}`;
+  }
+
+  function Resto() {
+    let n1 = Number(num1.value);
+    let n2 = Number(num2.value);
+    let result = n1 % n2;
+    mensagem.innerHTML = `O resto da divisão de ${n1} por ${n2} é igual a ${result}`;
+  }
+
+</script>

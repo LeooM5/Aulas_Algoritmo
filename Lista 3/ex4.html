@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      Me informe sua nota da avaliação continuada:
+      <input type="number" id="continuada" />
+      Me informe sua nota da avaliação semestral:
+      <input type="number" id="semestral" />
+      Me informe seu nome:
+      <input type="text" id="nome_user">
+      <button onclick="media()">Calcular Média</button>
+      <div id="mensagem"></div>
+    </main>
+  </body>
+</html>
+
+<script>
+    function media() {
+        let nome = nome_user.value
+        let cont = Number(continuada.value)
+        let semes = Number(semestral.value)
+        let somaFinal = (cont*0.4)+(semes*0.6)
+        mensagem.innerHTML = `A média de ${nome} será de ${somaFinal}`
+    }
+</script>

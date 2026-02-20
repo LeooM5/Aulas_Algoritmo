@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <section>
+        Me informe seu nome:
+        <input type="text" id="nome" />
+        Me informe o valor da sua atividade 1:
+        <input type="number" id="atv1" />
+        Me informe o valor da sua atividade 2:
+        <input type="number" id="atv2" />
+        Me informe o valor da sua atividade 3:
+        <input type="number" id="atv3" />
+        <button onclick="Nota()">Mostrar Nota</button>
+        <div id="mensagem"></div>
+      </section>
+    </main>
+  </body>
+</html>
+
+<script>
+  function Nota() {
+    let Name = nome.value;
+    let ativ1 = Number(atv1.value);
+    let ativ2 = Number(atv2.value);
+    let ativ3 = Number(atv3.value);
+    let soma = ativ1 + ativ2 + ativ3;
+    let media = soma / 3;
+    mensagem.innerHTML = `A soma das suas três atividades é: ${soma}<br>
+    ${Name}, a média das suas atividades é: ${media} `;
+  }
+</script>

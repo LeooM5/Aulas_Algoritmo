@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercício</title>
+    <link rel="stylesheet" href="../Exercicios 1/style.css" />
+    <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUuILvie2e3_DNB7rC2H5AiKNePEHKH_3zFi-EMjLVX1KLdkIS-j_BcwHMls2FwDT1Al8RE-XWOaDgtOqjvhLojgUf0UYI2_H8M8svSo8&s=10" type="image/x-icon">
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="" alt="" />
+      </div>
+      <nav>
+        <a href="">Home</a>
+        <a href="">Sobre</a>
+        <a href="">Contato</a>
+      </nav>
+      <div id="ajuda" class="help">
+        <button>Ajuda</button>
+      </div>
+    </header>
+
+    <div class="container">
+      <main>
+        <section class="1exerc exercicio">
+          <label for="CidadeNatal">Insira sua cidade natal:</label>
+          <input id="CidadeNatal" type="text" placeholder="Ex: São Paulo" />
+          <label for="dtNasc">Insira sua data de nascimento:</label>
+          <input id="dtNasc" type="date" placeholder="Ex: São Paulo" />
+          <button onclick="dizerOndeEQuandoNasceu()">Cadastrar</button>
+        </section>
+
+        <section class="2exerc exercicio">
+          <label for="peso">Insira seu Peso em KG:</label>
+          <input id="peso" type="number" placeholder="Ex: 64" />
+          <label for="altura">Insira sua altura em metros:</label>
+          <input id="altura" type="number" placeholder="Ex: 1.72" />
+          <button onclick="dizerAltEPeso()">Fale comigo</button>
+        </section>
+
+        <section class="3exerc exercicio">
+          <label for="nomeTime">Insira o Nome do Time:</label>
+          <input id="nomeTime" type="text" placeholder="Ex: Bragantino" />
+          <label for="qtdTitulos"
+            >Insira a Quantidade de Títulos que o clube possui:</label
+          >
+          <input id="qtdTitulos" type="number" placeholder="Ex: 7" />
+          <button onclick="dizerSobreOTime()">Amo meu time</button>
+        </section>
+
+        <section class="4exerc exercicio">
+          <label for="ondeMora">Insira seu logradouro:</label>
+          <input
+            id="ondeMora"
+            type="text"
+            placeholder="Nome da Rua/Avenida/Vila"
+          />
+          <label for="NumCasa">Insira o número do seu logradouro:</label>
+          <input id="NumCasa" type="number" placeholder="Número da Casa" />
+          <button onclick="dizerOndeMoro()">Onde eu moro</button>
+        </section>
+
+        <section class="5exerc exercicio">
+          <label for="notaEscola">Insira sua nota na escola:</label>
+          <input
+            id="notaEscola"
+            type="number"
+            min="0"
+            max="10"
+            maxlength="2"
+            placeholder="Ex: 10"
+          />
+
+          <button onclick="opiniaoVo()">Opinião da avó</button>
+          <button onclick="opiniaoMae()">Opinião da mãe</button>
+        </section>
+
+        <section class="exerc6 exercicio">
+          <div class="botoes">
+            <button onclick="Pare()">Pare</button>
+            <button onclick="Pense()">Pense</button>
+            <button onclick="Siga()">Siga</button>
+          </div>
+          <div class="frase">
+            <p id="frase"></p>
+          </div>
+        </section>
+
+        <section class="exerc7 exercicio">
+          <label for="nomePet">Insira o nome do seu Pet:</label>
+          <input placeholder="Robson" type="text" id="nomePet" />
+          <label for="especiePet">Escolha a espécie do seu Pet:</label>
+          <select name="especiePet" id="especiePet">
+            <option selected hidden disabled value=""></option>
+            <option value="Cachorro">Cachorro</option>
+            <option value="Gato">Gato</option>
+            <option value="Peixe">Peixe</option>
+            <option value="Híbrido Geneticamente Modificado">
+              Híbrido Geneticamente Modificado
+            </option>
+          </select>
+          <button onclick="identificarPet()">Identificar Pet</button>
+        </section>
+
+        <section class="exerc8 exercicio">
+          <label for="nomeFilme">Insira o nome do Filme:</label>
+          <input placeholder="Shrek" type="text" name="nomeFilme" id="nomeFilme" />
+          <label for="horarioFilme">Insira o horário da sessão:</label>
+          <input type="time" name="horarioFilme" id="horarioFilme" />
+          <button onclick="confirmarIngresso()">Confirmar Ingresso</button>
+        </section>
+
+        <section class="exerc9 exercicio">
+          <label for="temperaturaAtual">Insira a temperatura atual:</label>
+          <input placeholder="30" type="text" name="temperaturaAtual" id="temperaturaAtual" />
+          <label for="condicaoAtual">Escolha a condição atual do tempo:</label>
+          <select name="condicaoAtual" id="condicaoAtual">
+            <option selected hidden disabled value=""></option>
+            <option value="Chuvoso">Chuvoso</option>
+            <option value="Ensolarado">Ensolarado</option>
+            <option value="Nublado">Nublado</option>
+          </select>
+          <button onclick="verDica()">Ver Dica</button>
+        </section>
+
+        <section class="exerc10 exercicio">
+            <label for="distPercorrida">Insira a sua distância percorrida em km:</label>
+            <input placeholder="3" type="text" name="distPercorrida" id="distPercorrida">
+            <label for="tempoGasto">Insira o tempo gasto em minutos:</label>
+            <input min="0" type="number" name="tempoGasto" id="tempoGasto">
+            <button onclick="finalizarTreino()">Finalizar Treino</button>
+        </section>
+      </main>
+    </div>
+    <footer>
+      <p>
+        Todos os direitos reservados &copy | Desenvolvido por Leonardo Moura
+      </p>
+    </footer>
+  </body>
+</html>
+
+<script>
+  function dizerOndeEQuandoNasceu() {
+    alert(
+      "Você nasceu na cidade de " +
+        CidadeNatal.value +
+        " " +
+        "em " +
+        dtNasc.value,
+    );
+  }
+
+  function dizerAltEPeso() {
+    alert(
+      "Você pesa " +
+        peso.value +
+        " " +
+        "kg e tem " +
+        altura.value +
+        "m de altura",
+    );
+  }
+
+  function dizerSobreOTime() {
+    alert(
+      "O time " +
+        nomeTime.value +
+        " " +
+        "tem " +
+        qtdTitulos.value +
+        " " +
+        "títulos",
+    );
+  }
+
+  function dizerOndeMoro() {
+    alert("Seu logradouro é " + ondeMora.value);
+    alert("O número do seu logradouro é " + NumCasa.value);
+  }
+
+  function opiniaoVo() {
+    alert("Muito bem, que neto inteligente, porque tirou " + notaEscola.value);
+  }
+
+  function opiniaoMae() {
+    alert("Não fez mais que tua obrigação com essa nota  " + notaEscola.value);
+  }
+
+  function Pare() {
+    frase.innerHTML = "Pare e Aguarde!";
+    setTimeout(() => {
+      frase.innerHTML = "";
+    }, 1000);
+  }
+
+  function Pense() {
+    frase.innerHTML = "Pense se pode seguir ou se deve parar!";
+    setTimeout(() => {
+      frase.innerHTML = "";
+    }, 1000);
+  }
+
+  function Siga() {
+    frase.innerHTML = "Pode seguir adiante";
+    setTimeout(() => {
+      frase.innerHTML = "";
+    }, 1000);
+  }
+
+  function identificarPet() {
+    alert(
+      "O seu pet se chama " +
+        nomePet.value +
+        " " +
+        "e ele é um " +
+        especiePet.value,
+    );
+  }
+
+  function confirmarIngresso() {
+    alert(
+      "Ingresso confirmado para o filme " +
+        nomeFilme.value +
+        " " +
+        "no horário das " +
+        horarioFilme.value,
+    );
+  }
+
+  function verDica() {
+    alert(
+      "Está fazendo " +
+        temperaturaAtual.value +
+        "°C e o dia está " +
+        condicaoAtual.value,
+    );
+  }
+
+  function finalizarTreino() {
+    alert('Você percorreu ' + distPercorrida.value + 'km hoje!');
+    alert('O seu tempo total de exercício foi de ' + tempoGasto.value + ' ' + 'minutos.');
+  }
+
+</script>
