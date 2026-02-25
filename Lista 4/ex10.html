@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <label for="nomeSerie"
+        >Me informe a última série assistida por você:</label
+      >
+      <input type="text" id="nomeSerie" />
+      <label for="numEp"
+        >Me informe o total de episódios assistidos dessa série:</label
+      >
+      <input type="number" id="numEp" />
+      <button onclick="verificarNivel()">Verificar nível</button>
+      <div id="msg"></div>
+    </main>
+  </body>
+</html>
+
+<script>
+  function verificarNivel() {
+    let nomeDaSerie = nomeSerie.value;
+    let qtdEpAssistidos = Number(numEp.value);
+    let totalTempoAssistido = qtdEpAssistidos * 22;
+    let totalHorasAssistidas = totalTempoAssistido / 60;
+
+    if (totalHorasAssistidas > 30) {
+      msg.innerHTML = `Vejo que você gosta da série ${nomeDaSerie}<br>Uau, você realmente gosta dessa série!`;
+    } else {
+      msg.innerHTML = `Vejo que você gosta da série ${nomeDaSerie}`;
+    }
+  }
+</script>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <label for="diasEmOp">Me informe a quantidade de dias em operação:</label>
+      <input type="number" id="diasEmOp" />
+      <button onclick="ProcessarOp()">Processar DIAS</button>
+      <button onclick="PararOp()">Stop Operação</button>
+      <button onclick="ReiniciarOp()">Reiniciar Processo</button>
+      <div id="msg"></div>
+    </main>
+  </body>
+</html>
+
+<script>
+  let TvmATUAL = 1000;
+
+  function ProcessarOp() {
+    let TvmMostrar = TvmATUAL;
+    let qtdDias = Number(diasEmOp.value);
+    let horasDias = qtdDias * 24;
+    TvmATUAL -= horasDias;
+    msg.innerHTML += ` <br><br>
+    O TVM anterior era de ${TvmMostrar} horas e após ${qtdDias} dias de operação o TVM passou para ${TvmATUAL} horas`;
+  }
+
+  function PararOp() {
+    let TvmMostrar = TvmATUAL;
+    TvmATUAL -= 100;
+    msg.innerHTML += ` <br><br>
+    O TVM anterior era de ${TvmMostrar} horas, após o Stop de operação o TVM passou para ${TvmATUAL} horas`;
+  }
+
+  function ReiniciarOp() {
+    msg.innerHTML = ''
+    let TvmMostrar = TvmATUAL;
+        TvmATUAL = 1000;
+    msg.innerHTML += `  <br><br>
+    Ainda existia  ${TvmMostrar} horas, com o reinicio do processo, o TVM passou para 1000 horas.`;
+  }
+</script>

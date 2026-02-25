@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <label for="nota1">Me informa sua 1° nota:</label>
+      <input min="0" max="10" type="number" id="nota1" />
+      <label for="nota2">Me informa sua 2° nota:</label>
+      <input min="0" max="10" type="number" id="nota2" />
+      <button onclick="calcularMedia()">Verificar situação</button>
+    </main>
+  </body>
+</html>
+
+<script>
+  function calcularMedia() {
+    let n1 = Number(nota1.value);
+    let n2 = Number(nota2.value);
+    let media = (n1 + n2) / 2;
+    if (media >= 6) {
+      alert(`Parabéns, aprovado!`);
+    } else {
+      alert(`Tente outra vez...`);
+    }
+  }
+</script>

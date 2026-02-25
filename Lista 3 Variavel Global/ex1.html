@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <button onclick="Receber100()">Receber 100</button>
+      <button onclick="Pagar50()">Pagar 50</button>
+      <br>
+      <br>
+      <div id="saldoUser">Saldo: R$0</div>
+    </main>
+  </body>
+</html>
+
+<script>
+  let saldoAtual = 0;
+
+  function Receber100() {
+    saldoAtual += 100;
+    saldoUser.innerHTML = `Transferência de R$100 recebida! Saldo atual: R$${saldoAtual}`;
+  }
+
+  function Pagar50() {
+    saldoAtual -= 50;
+    saldoUser.innerHTML = `Pagamento de R$50 efetuado! Saldo atual: R$${saldoAtual}`;
+  }
+</script>

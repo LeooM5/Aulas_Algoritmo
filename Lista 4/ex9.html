@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <label for="qtdHomensElevador"
+        >Me informe a quantidade de homens que entraram no eleveador:</label
+      >
+      <input type="number" id="qtdHomensElevador" />
+      <label for="qtdMulheresElevador"
+        >Me informe a quantidade de mulheres que entraram no eleveador:</label
+      >
+      <input type="number" id="qtdMulheresElevador" />
+      <button onclick="AnalisarPeso()">Analisar Peso</button>
+      <div id="msg"></div>
+    </main>
+  </body>
+</html>
+
+<script>
+  function AnalisarPeso() {
+    let homens = Number(qtdHomensElevador.value);
+    let mulheres = Number(qtdMulheresElevador.value);
+    let pesoTotalEstimado = homens * 80 + mulheres * 60;
+    if (pesoTotalEstimado > 800) {
+      msg.innerHTML = `Este elevador suporta 800 Kg e o peso estimado desta lotação é de ${pesoTotalEstimado}kg <br>
+      <span style="color: blue;">Será necessário que alguém desça para que o elevador se movimente</span>`;
+    } else {
+      msg.innerHTML = `Este elevador suporta 800 Kg e o peso estimado desta lotação é de ${pesoTotalEstimado}kg`;
+    }
+  }
+</script>

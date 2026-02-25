@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <label for="saldoUser"> Me informe o saldo da conta:</label>
+      <input type="number" id="saldoUser" />
+      <label for="debitoUser"> Me informe o valor do débito:</label>
+      <input type="number" id="debitoUser" />
+      <button onclick="analisar()">Analisar conta</button>
+      <div id="msg"></div>
+    </main>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let saldo = Number(saldoUser.value);
+    let debito = Number(debitoUser.value);
+    saldo -= debito;
+    if (saldo < 0) {
+      msg.innerHTML = `O saldo atual da conta corrente é <span style="color: red; font-weight: bold;">R$${saldo}</span>`;
+    } else {
+      msg.innerHTML = `O saldo atual da conta corrente é R$${saldo}`;
+    }
+  }
+</script>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <label for="qtdKwhMensal"
+        >Me informe a quantidade de KWh consumida no mês:</label
+      >
+      <input type="number" id="qtdKwhMensal" />
+      <button onclick="calcularContaMensal()">Calcular conta de luz</button>
+    </main>
+  </body>
+</html>
+
+<script>
+  function calcularContaMensal() {
+    let qtdKwhMes = Number(qtdKwhMensal.value);
+    let precoMes = Number(qtdKwhMes * 0.85);
+    let desconto = precoMes * 0.1;
+    if (qtdKwhMes < 100) {
+      precoMes -= desconto;
+      alert(`O preço mensal a se pagar do KWh é de R$${precoMes.toFixed(2)}`);
+    } else {
+      alert(`O preço mensal a se pagar do KWh é de R$${precoMes.toFixed(2)}`);
+    }
+  }
+</script>

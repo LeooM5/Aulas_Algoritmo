@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <button onclick="incrementar()">Incrementar</button>
+    <button onclick="decrementar()">Decrementar</button>
+    <br />
+    <br />
+    <button id="div_contagem">0</button>
+  </body>
+</html>
+
+<script>
+  let contador = Number(div_contagem.value);
+
+  function incrementar() {
+    contador += 1;
+    div_contagem.innerHTML = div_contagem.innerHTML + `<br>${contador}`;
+  }
+
+  function decrementar() {
+    contador -= 1;
+    div_contagem.innerHTML = div_contagem.innerHTML + `<br>${contador}`;
+  }
+</script>

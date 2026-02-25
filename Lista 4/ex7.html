@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <label for="rendaFamiliar">Me informe o valor da renda familiar:</label>
+      <input type="number" id="rendaFamiliar" />
+      <label for="valorPrestacao">Me informe o valor da prestação:</label>
+      <input type="number" id="valorPrestacao" />
+      <button onclick="financiamento()">Verificar financiamento</button>
+      <div id="msg"></div>
+      <div
+        id="msg2"
+        style="font-weight: bold; font-style: italic; color: red"
+      ></div>
+    </main>
+  </body>
+</html>
+
+<script>
+  function financiamento() {
+    let rendaFam = Number(rendaFamiliar.value);
+    let valorPrest = Number(valorPrestacao.value);
+    let prestacao = ((valorPrest / rendaFam) * 100).toFixed(2);
+    if (prestacao > 30) {
+      msg.innerHTML = `A prestação corresponde a ${prestacao}% da renda familiar`;
+      msg2.innerHTML = `Será necessário complementar a renda familia`;
+    } else {
+      msg.innerHTML = `A prestação corresponde a ${prestacao}% da renda familiar`;
+      msg2.innerHTML = ``
+    }
+  }
+</script>

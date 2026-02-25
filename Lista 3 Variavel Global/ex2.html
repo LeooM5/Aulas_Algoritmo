@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <label for="credito">Me informe o valor a ser depositado:</label>
+      <input type="number" id="credito" />
+      <button onclick="Creditar()">Depositar</button>
+      <label for="debito">Me informe o valor a ser retirado:</label>
+      <input type="number" id="debito" />
+      <button onclick="Debitar()">Retirar</button>
+      <div id="saldoAtual">Saldo atual: R$0</div>
+    </main>
+  </body>
+</html>
+
+<script>
+  let saldoAt = 0;
+
+  function Creditar() {
+    let valorCred = Number(credito.value);
+    saldoAt += valorCred;
+    saldoAtual.innerHTML = `Depósito de R$${valorCred} efetuado! Saldo atual: R$${saldoAt}`;
+  }
+
+  function Debitar() {
+    let valorDeb = Number(debito.value);
+    saldoAt -= valorDeb;
+    saldoAtual.innerHTML = `Retirada de R$${valorDeb} efetuada! Saldo atual: R$${saldoAt}`;
+  }
+</script>

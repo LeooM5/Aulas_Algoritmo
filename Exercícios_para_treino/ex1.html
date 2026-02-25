@@ -29,6 +29,6 @@
     let anosRendendo = Number(anosDeRendimento.value);
     let valorJuros = valorInicio * (1 + taxaJuros) ** anosRendendo;
     let valorFinal = valorInicio + valorJuros;
-    msg.innerHTML = `Após ${anosRendendo} anos, seu investimento de ${valorInicio} renderá ${valorJuros.toFixed(2)}, totalizando um montante de ${valorFinal.toFixed(2)}`;
+    msg.innerHTML = `Após ${anosRendendo} anos, seu investimento de R$${valorInicio} renderá R$${valorJuros.toFixed(2)}, totalizando um montante de R$${valorFinal.toFixed(2)}`;
   }
 </script>

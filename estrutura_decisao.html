@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <label for="idadeUser">Me informe sua idade:</label>
+      <input required type="number" id="idadeUser" />
+      <button id="btn" onclick="verificar()">Verificar Idade</button>
+      <div id="msg"></div>
+    </main>
+  </body>
+</html>
+
+<script>
+  function verificar() {
+    let idadeDoUser = Number(idadeUser.value);
+    if (idadeDoUser >= 18) {
+      msg.innerHTML = `Maior de idade!`;
+    } else if (idadeDoUser > 0) {
+      msg.innerHTML = `Menor de idade!`;
+    } else {
+      msg.innerHTML = `Insira uma idade válida!`;
+    }
+  }
+</script>

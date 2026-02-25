@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <label for="latinhas"
+        >Me informe a quantidade de latinhas tomadas por você
+        diariamente:</label
+      >
+      <input type="number" id="latinhas" />
+      <button onclick="qtdLatinhas()">Quantos refris?</button>
+      <div id="msg"></div>
+    </main>
+  </body>
+</html>
+
+<script>
+  function qtdLatinhas() {
+    let qtdLatas = Number(latinhas.value);
+    let qtdLatasAnual = qtdLatas * 365;
+    if (qtdLatasAnual < 500) {
+      msg.innerHTML = `A quantidade anual de latinhas que você consome é de: ${qtdLatasAnual}`;
+    } else {
+      msg.innerHTML = `A quantidade anual de latinhas que você consome é de: ${qtdLatasAnual}
+      <br><br>
+            Cuidado com a diabetes!`;
+    }
+  }
+</script>
