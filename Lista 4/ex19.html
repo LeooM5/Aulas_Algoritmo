@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Mercado BOM DOCE</h1>
+    Qual a quantidade de chocolates comprados:
+    <input type="number" id="qtdChoco" />
+    <button onclick="Compra()">Compra</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function Compra() {
+    let quantidadeChoco = Number(qtdChoco.value);
+    let precoNormal = 3;
+    let precoDesc = 2.5;
+    let precoTotal;
+    if (quantidadeChoco > 12) {
+      precoTotal = precoDesc * quantidadeChoco;
+      msg.innerHTML = `O valor da sua compra foi de R$${precoTotal}`;
+    } else {
+      precoTotal = precoNormal * quantidadeChoco;
+      msg.innerHTML = `O valor da sua compra foi de R$${precoTotal}`;
+    }
+  }
+</script>

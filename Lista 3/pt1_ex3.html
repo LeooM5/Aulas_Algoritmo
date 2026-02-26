@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Economia com o Bilhete Único</h1>
+    <section>
+      <label for="valorPassagem">Insira o valor da passagem do ônibus:</label>
+      <input type="number" id="valorPassagem" />
+      <label for="viagensMensais"
+        >Insira o número de viagens que você fará por mês:</label
+      >
+      <input type="number" id="viagensMensais" />
+      <button onclick="economiaMensal()">Ver economia</button>
+      <div id="mensagem"></div>
+    </section>
+  </body>
+</html>
+
+<script>
+  function economiaMensal() {
+    if (valorPassagem.value <= 0) {
+      mensagem.innerHTML = "Insira valores válidos";
+    } else
+      mensagem.innerHTML =
+        "Você economizará R$ " +
+        (Number(valorPassagem.value) * Number(viagensMensais.value) -
+          Number(valorPassagem.value / 2) *
+            Number(viagensMensais.value).toFixed(2)) +
+        " " +
+        "por mês";
+  }
+</script>

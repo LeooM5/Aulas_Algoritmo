@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Aposentadoria: Quanto Falta?</h1>
+    <section>
+      <label for="idadeUser">Insira sua idade:</label>
+      <input required id="idadeUser" type="number" />
+      <button onclick="aposentadoriaH()">Aposentadoria Homem</button>
+      <button onclick="aposentadoriaM()">Aposentadoria Mulher</button>
+      <div id="message"></div>
+    </section>
+  </body>
+</html>
+
+<script>
+  function aposentadoriaH() {
+    if (idadeUser.value <= 0) {
+      message.innerHTML = "Insira sua idade!";
+    }
+    if (idadeUser.value >= 70) {
+      message.innerHTML = "Você já se aposentou";
+    } else
+      message.innerHTML =
+        "Falta " +
+        (70 - Number(idadeUser.value)) +
+        " " +
+        "anos para você se aposentar";
+  }
+
+  function aposentadoriaM() {
+    if (idadeUser.value <= 0) {
+      message.innerHTML = "Insira sua idade!";
+    }
+
+    if (idadeUser.value >= 60) {
+      message.innerHTML = "Você já se aposentou";
+    } else
+      message.innerHTML =
+        "Falta " +
+        (60 - Number(idadeUser.value)) +
+        " " +
+        "anos para você se aposentar";
+  }
+</script>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Análise de temperatura</h1>
+    Me informe a temperatura do ambiente:
+    <input type="number" id="temperatura" />
+    <button onclick="Verificar()">Verificar clima</button>
+    <div id="img"></div>
+  </body>
+</html>
+
+<script>
+  function Verificar() {
+    let tempAmbiente = Number(temperatura.value);
+    if (tempAmbiente < 10) {
+      img.innerHTML = `<img style="width:auto; height:400px" src="https://www.hojeemdia.com.br/image/policy:1.573556.1628561463:1628561463/image.jpg?f=2x1&w=1200">`;
+    } else {
+      img.innerHTML = `<img style="width:auto; height:400px" src="https://image.tuasaude.com/media/article/ed/zg/como-identificar-alimentos-estragados_22594.jpg?width=686&height=487">`;
+    }
+  }
+</script>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Conversor de Moedas da Barbie: De "B-Dollars" para Real</h1>
+    <section>
+      <label for="qtdBDollars"
+        >Informe a quantidade de B-Dollars que deseja converter:</label
+      >
+      <input type="number" id="qtdBDollars" />
+      <label for="valorCotacao"
+        >Insira o valor de cotação do B-Dollars, quanto ele vale em
+        Reais:</label
+      >
+      <input type="number" id="valorCotacao" />
+      <button onclick="converterBDollars()">Calcular Câmbio</button>
+      <div id="mensagem5"></div>
+    </section>
+  </body>
+</html>
+
+<script>
+  function converterBDollars() {
+    if (qtdBDollars.value <= 0 || valorCotacao.value <= 0) {
+      mensagem5.innerHTML = "Insira valores válidos!";
+    } else
+      mensagem5.innerHTML =
+        "Ao converter seus B-Dollars, o dinheiro disponível será: R$" +
+        (Number(qtdBDollars.value) * Number(valorCotacao.value) - 5.5).toFixed(
+          2,
+        );
+  }
+</script>

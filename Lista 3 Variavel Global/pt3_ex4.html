@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <h1>Controle de TVM de caldeira de geração energia elétrica</h1>
     <main>
       <label for="diasEmOp">Me informe a quantidade de dias em operação:</label>
       <input type="number" id="diasEmOp" />
@@ -38,9 +39,9 @@
   }
 
   function ReiniciarOp() {
-    msg.innerHTML = ''
+    msg.innerHTML = "";
     let TvmMostrar = TvmATUAL;
-        TvmATUAL = 1000;
+    TvmATUAL = 1000;
     msg.innerHTML += `  <br><br>
     Ainda existia  ${TvmMostrar} horas, com o reinicio do processo, o TVM passou para 1000 horas.`;
   }

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Teste de divisibilidade</h1>
+    Me informe o primeiro número:
+    <input type="number" id="num1" />
+    Me informe o segundo número:
+    <input type="number" id="num2" />
+    <button onclick="Testar()">Testar</button>
+    <div id="img"></div>
+  </body>
+</html>
+
+<script>
+  function Testar() {
+    let n1 = Number(num1.value);
+    let n2 = Number(num2.value);
+    if (n1 % n2 == 0) {
+      img.innerHTML = `<img style="width: 360px; height: 347px"  src="https://img.freepik.com/vetores-premium/emoticon-de-pulso-para-cima-piscando_1303870-100.jpg?semt=ais_hybrid&w=740&q=80"/>`;
+    } else {
+      img.innerHTML = `<img src="https://img.freepik.com/vetores-premium/emoji-insatisfeito-emoticon-mostrando-o-polegar-para-baixo-nao-gosto-do-gesto-da-mao_1303870-1292.jpg?w=360"/>`;
+    }
+  }
+</script>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Par ou Impar</h1>
+    Me informe um número
+    <input type="number" id="num">
+    <button onclick="Analisar()">Analisar</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function Analisar() {
+    let n = Number(num.value)
+    if(n%2 === 0) {
+      msg.innerHTML = `<span style="color: red; background-color: yellow;">Esse número é PAR</span>`
+    } else {
+      msg.innerHTML = `<span style="color: blue; font-weight: bold;">Esse número é impar</span>`
+    }
+  }
+</script>

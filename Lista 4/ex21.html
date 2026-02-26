@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Análise de frequência do aluno</h1>
+    Me informe sua frequencia em aula:
+    <input type="number" id="freqAluno" />
+    <button onclick="Analisar()">Analisar frequência</button>
+    <div id="img"></div>
+  </body>
+</html>
+
+<script>
+  function Analisar() {
+    let frequenciaAluno = Number(freqAluno.value);
+    if (frequenciaAluno < 50) {
+      img.innerHTML = `<br> <img style="width: auto; height: 347px"  src="https://st4.depositphotos.com/12985790/20516/i/450/depositphotos_205163862-stock-photo-smiling-traveler-hat-backpack-tourist.jpg"/>`;
+    } else {
+      img.innerHTML = `<br> <img style="width: auto; height: 347px"  src="https://thumbor.novaescola.org.br/UvQqgvE7F1WcR3LJvxcxxnBxBgg=/nova-escola-producao.s3.amazonaws.com/XVJVRfPNxAj2b7S7hv72UXceJ9rZafrz8AVT2WGAkcHxbHeYSxTVE7YjqKf5/aprender-a-estudar-1.jpg"/>`;
+    }
+  }
+</script>

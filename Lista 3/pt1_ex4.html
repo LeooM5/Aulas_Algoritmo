@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Cálculo do IMC</h1>
+    <section>
+      <label for="pesoUser">Insira seu peso em kg:</label>
+      <input type="number" id="pesoUser" />
+      <label for="altUser">Insira sua altura em metros:</label>
+      <input type="number" id="altUser" />
+      <button onclick="calcularIMC()">Calcular IMC</button>
+      <div id="mensagem2"></div>
+    </section>
+  </body>
+</html>
+
+<script>
+  function calcularIMC() {
+    if (pesoUser.value <= 0 || altUser.value <= 0) {
+      mensagem2.innerHTML = "Insira valores válidos!";
+    } else
+      mensagem2.innerHTML =
+        "Seu IMC é igual a " +
+        (Number(pesoUser.value) / Number(altUser.value) ** 2).toFixed(2);
+  }
+</script>

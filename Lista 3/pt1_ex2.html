@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Dividindo a Pizza</h1>
+    <section>
+      <label for="valorPizza">Insira o valor da pizza:</label>
+      <input type="number" id="valorPizza" />
+      <label for="qtdAmigos">Insira a quantidade de amigos:</label>
+      <input type="number" id="qtdAmigos" />
+      <button onclick="divisaoPizza()">#lovePizza</button>
+      <div id="message2"></div>
+    </section>
+  </body>
+</html>
+
+<script>
+  function divisaoPizza() {
+    if (valorPizza.value <= 0 || qtdAmigos.value <= 0) {
+      message2.innerHTML = "Insira valores válidos!";
+    } else
+      message2.innerHTML =
+        "Cada um dos " +
+        qtdAmigos.value +
+        " " +
+        "amigos vai pagar R$" +
+        Number(valorPizza.value) / Number(qtdAmigos.value);
+  }
+</script>

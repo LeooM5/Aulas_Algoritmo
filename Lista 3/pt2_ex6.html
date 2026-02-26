@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <h1>Eleição</h1>
     <main>
       Informe a quantidade de votos do candidato A:
       <input type="number" id="qtdA" />
@@ -30,9 +31,9 @@
     let qtdVotosNulos = Number(qtdNulo.value);
     let totalVotos = qtdVotosA + qtdVotosB + qtdVotosBrancos + qtdVotosNulos;
     let votosInvalidos = qtdVotosBrancos + qtdVotosNulos;
-    let porcentagemVotosA = (qtdVotosA/totalVotos)*100
-    let porcentagemVotosB = (qtdVotosB/totalVotos)*100
-    let porcentagemVotosInvalidos = (votosInvalidos/totalVotos)*100
+    let porcentagemVotosA = (qtdVotosA / totalVotos) * 100;
+    let porcentagemVotosB = (qtdVotosB / totalVotos) * 100;
+    let porcentagemVotosInvalidos = (votosInvalidos / totalVotos) * 100;
     msg.innerHTML = `
     Total de votos: ${totalVotos}
     <br>

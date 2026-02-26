@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <h1>Cálculo do Vale Transporte</h1>
     <main>
       Me informe o valor da passagem do ônibus:
       <input type="number" id="passagem" />
@@ -27,10 +28,10 @@
     let distanciaTrabalhoCasa = Number(distancia.value);
     let viagensApp = quantidadeViagensFeitas * 0.1;
     let viagensOriginal = quantidadeViagensFeitas - viagensApp;
-    let valorViagensApp = (distanciaTrabalhoCasa*.75)*viagensApp
-    let valorViagensOnibus = valorPassagem*viagensOriginal
-    let valorTotal = valorViagensApp+valorViagensOnibus
+    let valorViagensApp = distanciaTrabalhoCasa * 0.75 * viagensApp;
+    let valorViagensOnibus = valorPassagem * viagensOriginal;
+    let valorTotal = valorViagensApp + valorViagensOnibus;
 
-    msg.innerHTML = `Você vai gastar R$${valorTotal} por mês com transporte. `
+    msg.innerHTML = `Você vai gastar R$${valorTotal} por mês com transporte. `;
   }
 </script>
