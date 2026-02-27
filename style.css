@@ -22,74 +22,81 @@ main {
 
 #queijoPerdas {
     position: absolute;
-    align-self: flex-end;
     background-color: transparent;
     width: 18em;
     height: 20em;
     cursor: pointer;
     left: 2%;
     bottom: 8%;
+    max-width: 18em;
+    max-height: 20em;
 }
 
 #sal {
     position: absolute;
-    align-self: flex-end;
     background-color: transparent;
     width: 10em;
     height: 15em;
     cursor: pointer;
     left: 31%;
     bottom: 3%;
+    max-width: 10em;
+    max-height: 15em;
 }
 
 #leiteCru {
     position: absolute;
-    align-self: flex-end;
     background-color: transparent;
     width: 9em;
     height: 10em;
     cursor: pointer;
     left: 43%;
     bottom: 6%;
+    max-width: 9em;
+    max-height: 10em;
 }
 
 #camaraMaturacao {
     position: absolute;
-    align-self: flex-end;
     background-color: transparent;
     width: 20em;
     height: 15em;
     cursor: pointer;
     left: 25%;
     top: 8%;
+    max-width: 20em;
+    max-height: 15em;
 }
 
 #tanqueInox {
     position: absolute;
-    align-self: flex-end;
     background-color: transparent;
     width: 25em;
     height: 20em;
     cursor: pointer;
     left: 35%;
     top: 30%;
+    max-width: 25em;
+    max-height: 20em;
 }
 
 #energia {
     position: absolute;
-    align-self: flex-end;
     background-color: transparent;
     width: 17em;
     height: 18em;
     cursor: pointer;
     right: 5%;
     top: 5%;
+    max-width: 17em;
+    max-height: 18em;
 }
 
 #agua {
     position: absolute;
-    align-self: flex-end;
     background-color: transparent;
+    max-width: 17em;
+    max-height: 18em;
     width: 17em;
     height: 18em;
     cursor: pointer;
@@ -104,9 +111,47 @@ main {
 #tanqueInox:hover,
 #energia:hover,
 #agua:hover {
-    box-shadow: -2px -2px 13px 3px blanchedalmond;
+    box-shadow: -1px -1px 6px 3px blanchedalmond;
+}
+
+#queijoPerdas,
+#sal,
+#leiteCru,
+#camaraMaturacao,
+#tanqueInox,
+#energia,
+#agua {
+    border-radius: 1em;
 }
 
 .separacao {
     height: 90dvh;
+}
+
+@media screen and (max-width:1400px) {
+
+    #queijoPerdas,
+    #sal,
+    #leiteCru,
+    #camaraMaturacao,
+    #tanqueInox {
+        width: 28%;
+        height: 45%;
+    }
+
+    #energia {
+        width: 24%;
+        height: 46%;
+        top: 6%;
+    }
+
+    #agua {
+        width: 24%;
+        height: 42%;
+    }
+
+    #sal,
+    #leiteCru {
+        bottom: 1%;
+    }
 }
