@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* HEADER */
+
+/* MAIN */
+
+main {
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    border-radius: 2em;
+    width: 60dvw;
+    height: 70dvh;
+    background-image: url(./queijo.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#queijoPerdas {
+    position: absolute;
+    align-self: flex-end;
+    background-color: transparent;
+    width: 18em;
+    height: 20em;
+    cursor: pointer;
+    left: 2%;
+    bottom: 8%;
+}
+
+#sal {
+    position: absolute;
+    align-self: flex-end;
+    background-color: transparent;
+    width: 10em;
+    height: 15em;
+    cursor: pointer;
+    left: 31%;
+    bottom: 3%;
+}
+
+#leiteCru {
+    position: absolute;
+    align-self: flex-end;
+    background-color: transparent;
+    width: 9em;
+    height: 10em;
+    cursor: pointer;
+    left: 43%;
+    bottom: 6%;
+}
+
+#camaraMaturacao {
+    position: absolute;
+    align-self: flex-end;
+    background-color: transparent;
+    width: 20em;
+    height: 15em;
+    cursor: pointer;
+    left: 25%;
+    top: 8%;
+}
+
+#tanqueInox {
+    position: absolute;
+    align-self: flex-end;
+    background-color: transparent;
+    width: 25em;
+    height: 20em;
+    cursor: pointer;
+    left: 35%;
+    top: 30%;
+}
+
+#energia {
+    position: absolute;
+    align-self: flex-end;
+    background-color: transparent;
+    width: 17em;
+    height: 18em;
+    cursor: pointer;
+    right: 5%;
+    top: 5%;
+}
+
+#agua {
+    position: absolute;
+    align-self: flex-end;
+    background-color: transparent;
+    width: 17em;
+    height: 18em;
+    cursor: pointer;
+    right: 1%;
+    bottom: 5%;
+}
+
+#queijoPerdas:hover,
+#sal:hover,
+#leiteCru:hover,
+#camaraMaturacao:hover,
+#tanqueInox:hover,
+#energia:hover,
+#agua:hover {
+    box-shadow: -2px -2px 13px 3px blanchedalmond;
+}
+
+.separacao {
+    height: 90dvh;
+}
