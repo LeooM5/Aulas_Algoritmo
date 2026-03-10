@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <main>
+      Temperatura
+      <input type="text" id="input_temperatura" />
+      <button onclick="analisar()">Analisar</button>
+      <div id="mensagem"></div>
+    </main>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let temp = Number(input_temperatura.value);
+
+    if (temp < 0) {
+      mensagem.innerHTML = `Temperatura abaixo de 0 °C`;
+    }
+
+    if (temp >= 0) {
+      if (temp <= 10) {
+        mensagem.innerHTML = `Temperatura está entre 0 e 10 °C`;
+      }
+    }
+  }
+</script>

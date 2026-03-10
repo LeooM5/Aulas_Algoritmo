@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Controle da umidade do ar</h1>
+    Me informe a umidade atual do ambiente:
+    <input type="number" id="ipt_umidade" />
+    <button onclick="analisar()">Verificar umidade</button>
+    <div id="mensagem"></div>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let umidadeAr = Number(ipt_umidade.value);
+
+    if (umidadeAr < 12) {
+      mensagem.innerHTML = `Estado de Emergencia`;
+    } else if (umidadeAr <= 20) {
+      mensagem.innerHTML = `Estado de alerta`;
+    } else if (umidadeAr <= 30) {
+      mensagem.innerHTML = `Estado de atenção`;
+    } else {
+      mensagem.innerHTML = `Nenhum risco`;
+    }
+  }
+</script>

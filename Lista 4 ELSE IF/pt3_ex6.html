@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Times Paulistas: O Canto da Sua Torcida!</h1>
+    Me informe o time de São Paulo que você torce (São Paulo, Palmeiras,
+    Corinthians, Santos)
+    <input type="text" id="ipt_time" />
+    <button onclick="analisar()">Fale sobre esse time</button>
+    <div id="mensagem"></div>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let timeTorce = ipt_time.value;
+
+    if (timeTorce == "Corinthians") {
+      mensagem.innerHTML = `Salve o Corinthians`;
+    } else if (timeTorce == "Palmeiras") {
+      mensagem.innerHTML = `Salve o alviverde imponente`;
+    } else if (timeTorce == "Santos") {
+      mensagem.innerHTML = `Agora quem dá a bola é o Santos`;
+    } else if (timeTorce == "São Paulo") {
+      mensagem.innerHTML = `Salve o Tricolor paulista`;
+    }
+  }
+</script>

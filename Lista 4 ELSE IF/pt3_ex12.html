@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Resto da Divisão por 5</h1>
+    Me informe um número:
+    <input type="number" id="ipt_numero" />
+    <button onclick="analisar()">Múltiplo de 5</button>
+    <div id="mensagem"></div>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let num = Number(ipt_numero.value);
+    let resto = num % 5;
+
+    if (num <= 0) {
+      alert(`Digite um número maior que zero`);
+    } else if (resto == 0) {
+      mensagem.innerHTML = `Perfeito, esse número é múltiplo de cinco`;
+    } else if (resto == 1) {
+      mensagem.innerHTML = `Vich, sobrou um`;
+    } else if (resto == 2) {
+      mensagem.innerHTML = `Para esse o resto é dois`;
+    } else if (resto == 3) {
+      mensagem.innerHTML = `Com mais dois daria certo`;
+    } else if (resto == 4) {
+      mensagem.innerHTML = `Só faltou 1 para ser múltiplo de 5`;
+    }
+  }
+</script>

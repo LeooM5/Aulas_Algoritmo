@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Classe Social em Tuvalu: Em Qual Você se Encaixa?</h1>
+    Me informe a renda mensal familiar:
+    <input type="number" id="ipt_rendaFamiliar" />
+    <button onclick="Analisar()">Analisar Renda</button>
+    <div id="mensagem"></div>
+  </body>
+</html>
+
+<script>
+  function Analisar() {
+    let rendaFamiliar = Number(ipt_rendaFamiliar.value);
+
+    if (rendaFamiliar <= 250) {
+      mensagem.innerHTML = `Classe E`;
+    } else if (rendaFamiliar <= 900) {
+      mensagem.innerHTML = `Classe D`;
+    } else if (rendaFamiliar <= 2500) {
+      mensagem.innerHTML = `Classe C`;
+    } else if (rendaFamiliar <= 9500) {
+      mensagem.innerHTML = `Classe B`;
+    } else {
+      mensagem.innerHTML = `Classe A`;
+    }
+  }
+</script>

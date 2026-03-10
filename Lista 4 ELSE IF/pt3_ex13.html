@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Imagem do Pokémon selecionado</h1>
+    Me informe o pokemon que você escolheria entre Bulbasaur, Charmander ou
+    Squirtle:
+    <input type="text" id="ipt_pokemon" />
+    <button onclick="analisar()">Escolher Pokémon</button>
+    <div id="imagem"></div>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let pokemon = ipt_pokemon.value;
+
+    if (pokemon == "Bulbasaur") {
+      imagem.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVj8RGVFmCjXMjZ3PLgBqZJ6f6k9h1vku52mjbOIjlFi0PcUkOkGG7JyyA-QjecRIW7OU-mi4DuKWlZD8Z5Anh3BIEL96eI0esCGW09pw&s">`;
+    } else if (pokemon == "Charmander") {
+      imagem.innerHTML = `<img src="https://static.wikia.nocookie.net/pokemonet/images/8/87/004CharmanderFRLG.png/revision/latest/scale-to-width-down/492?cb=20130505000902&path-prefix=pt-br">`;
+    } else if (pokemon == "Squirtle") {
+      imagem.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgoNtr92qRIJXcWlpacgoLWsplA2ovM0dtoMlOG34Mh7U3-3JCHk9XuOnXrJYDi8zs5NqWuRFg3oQLHCWFfDQKT7uCXLZ8Z-jz2VRurSO8XA&s=10">`;
+    } else {
+      imagem.innerHTML = `Pokémon não reconhecido.`;
+    }
+  }
+</script>

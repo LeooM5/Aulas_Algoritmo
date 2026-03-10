@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Altura e Esportes: Descubra Sua Vantagem Competitiva</h1>
+    Me informe sua altura em metros:
+    <input type="number" id="ipt_altura" />
+    <button onclick="Analisar()">Analisar Estatura</button>
+    <div id="mensagem"></div>
+  </body>
+</html>
+
+<script>
+  function Analisar() {
+    let alturaUser = Number(ipt_altura.value);
+
+    if (alturaUser <= 1.65) {
+      mensagem.innerHTML = `Você pode ser piloto de corrida`;
+    } else if (alturaUser <= 1.8) {
+      mensagem.innerHTML = `Você pode ser jogador de futebol`;
+    } else {
+      mensagem.innerHTML = `Você pode ser jogador de vôlei ou basquete`;
+    }
+  }
+</script>

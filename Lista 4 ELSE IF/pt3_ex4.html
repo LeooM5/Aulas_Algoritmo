@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Avaliação de Peso Infantil: Está Dentro da Faixa Saudável?</h1>
+    Me informe o peso da criança:
+    <input type="number" id="ipt_pesoKid" />
+    <button onclick="analisar()">Analisar Peso</button>
+    <div id="mensagem"></div>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let pesoKid = Number(ipt_pesoKid.value);
+
+    if (pesoKid <= 13.5) {
+      mensagem.innerHTML = `Abaixo do peso`;
+    } else if (pesoKid <= 21.2) {
+      if (pesoKid == 18.3) {
+        mensagem.innerHTML = `Peso perfeito`;
+      } else {
+        mensagem.innerHTML = `Peso na média`;
+      }
+    } else {
+      mensagem.innerHTML = `Acima do peso`;
+    }
+  }
+</script>

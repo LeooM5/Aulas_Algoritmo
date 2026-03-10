@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Sensação Térmica: Como o Corpo Humano Percebe a Temperatura</h1>
+    Me informe uma temperatura:
+    <input type="number" id="ipt_temp" />
+    <button onclick="ler()">Ler Temperatura</button>
+    <div id="mensagem"></div>
+  </body>
+</html>
+
+<script>
+  function ler() {
+    let temperatura = Number(ipt_temp.value);
+
+    if (temperatura <= 14) {
+      mensagem.innerHTML = `Congelante`;
+    } else if (temperatura <= 21) {
+      mensagem.innerHTML = `Com Frio`;
+    } else if (temperatura <= 24) {
+      mensagem.innerHTML = `Confortável `;
+    } else if (temperatura <= 31) {
+      mensagem.innerHTML = `Com Calor`;
+    } else {
+      mensagem.innerHTML = `Calor escaldante`;
+    }
+  }
+</script>

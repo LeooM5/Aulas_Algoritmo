@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <style>
+        #mensagem {
+            font-size: 10em;
+        }
+    </style>
+  </head>
+
+  <body>
+    <h1>Representação do humor do usuário</h1>
+    Me informe como está se sentindo hoje:
+    <select id="humor">
+      <option disabled selected hidden value=""></option>
+      <option value="Feliz">Feliz</option>
+      <option value="Triste">Triste</option>
+      <option value="Bravo">Bravo</option>
+      <option value="Surpreso">Surpreso</option>
+      <option value="Cansado">Cansado</option>
+    </select>
+    <button onclick="Mostrar()">Mostrar Humor</button>
+    <div id="mensagem"></div>
+  </body>
+</html>
+
+<script>
+  function Mostrar() {
+    let humorAtual = humor.value;
+
+    if (humorAtual == "Feliz") {
+      mensagem.innerHTML = `😊`;
+    } else if (humorAtual == "Triste") {
+      mensagem.innerHTML = `😢`;
+    } else if (humorAtual == "Bravo") {
+      mensagem.innerHTML = `😡`;
+    } else if (humorAtual == "Surpreso") {
+      mensagem.innerHTML = `😲`;
+    } else {
+      mensagem.innerHTML = `😴`;
+    }
+  }
+</script>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Classificação de Alunos: Como Está Seu Desempenho?</h1>
+    Me informe a nota do aluno:
+    <input type="number" id="ipt_nota" />
+    <button onclick="classificar()">Classificar aluno</button>
+  </body>
+</html>
+
+<script>
+  function classificar() {
+    let notaAluno = Number(ipt_nota.value);
+
+    if (notaAluno < 5) {
+      alert(`Aluno precisa de muita ajuda`);
+    } else if (notaAluno <= 7) {
+      alert(`Aluno na média`);
+    } else if (notaAluno <= 9.5) {
+      alert(`Aluno na acima da média`);
+    } else {
+      alert(`Aluno fora da curva`);
+    }
+  }
+</script>

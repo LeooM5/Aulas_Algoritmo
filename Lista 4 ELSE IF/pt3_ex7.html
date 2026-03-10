@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Consumo de Calorias: Sua Dieta Está Saudável?</h1>
+    Me informe quantos pães franceses o usuário tem comido por dia:
+    <input type="number" id="ipt_paoFrances" />
+    Me informe quantos pacotes de bolacha recheada o usuário tem comido por dia:
+    <input type="number" id="ipt_bolachaReche" />
+    Me informe quantos copos de achocolatado o usuário tem tomado por dia:
+    <input type="number" id="ipt_copoAcho" />
+    <button onclick="analisar()">Verificar calorias</button>
+    <div id="mensagem"></div>
+  </body>
+</html>
+
+<script>
+  let caloriasPao = 50;
+  let caloriasPacoteBolacha = 80;
+  let caloriasCopoAchocolatado = 70;
+
+  function analisar() {
+    let qtdPao = Number(ipt_paoFrances.value);
+    let qtdPacoteBolacha = Number(ipt_bolachaReche.value);
+    let qtdCopoAcho = Number(ipt_copoAcho.value);
+
+    let totalCalorias =
+      qtdPao * caloriasPao +
+      qtdPacoteBolacha * caloriasPacoteBolacha +
+      qtdCopoAcho * caloriasCopoAchocolatado;
+
+    if (totalCalorias < 200) {
+      mensagem.innerHTML = `Parabéns, vai ficar em forma!`;
+    } else if (totalCalorias <= 400) {
+      mensagem.innerHTML = `Cuidado, vai ficar menos saudável !`;
+    } else {
+      mensagem.innerHTML = `Alerta crítico de saúde !!!`;
+    }
+  }
+</script>
