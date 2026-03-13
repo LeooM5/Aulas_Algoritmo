@@ -24,9 +24,13 @@
     let desconto = precoMes * 0.1;
     if (qtdKwhMes < 100) {
       precoMes -= desconto;
-      alert(`O preço mensal a se pagar do KWh é de R$${precoMes.toFixed(2)}`);
+      alert(
+        `O preço mensal a se pagar do KWh é de ${precoMes.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`,
+      );
     } else {
-      alert(`O preço mensal a se pagar do KWh é de R$${precoMes.toFixed(2)}`);
+      alert(
+        `O preço mensal a se pagar do KWh é de ${precoMes.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`,
+      );
     }
   }
 </script>

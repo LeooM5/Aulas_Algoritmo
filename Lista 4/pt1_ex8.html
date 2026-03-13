@@ -24,9 +24,9 @@
     let debito = Number(debitoUser.value);
     saldo -= debito;
     if (saldo < 0) {
-      msg.innerHTML = `O saldo atual da conta corrente é <span style="color: red; font-weight: bold;">R$${saldo}</span>`;
+      msg.innerHTML = `O saldo atual da conta corrente é <span style="color: red; font-weight: bold;">${saldo.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</span>`;
     } else {
-      msg.innerHTML = `O saldo atual da conta corrente é R$${saldo}`;
+      msg.innerHTML = `O saldo atual da conta corrente é ${saldo.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`;
     }
   }
 </script>

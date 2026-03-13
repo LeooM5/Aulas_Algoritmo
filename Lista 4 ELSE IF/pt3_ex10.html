@@ -24,7 +24,6 @@
     let velocidadeDirigindo = Number(ipt_velocidade.value);
     let limiteVia = Number(ipt_limite.value);
     let percentual = (velocidadeDirigindo / limiteVia);
-    console.log(percentual)
 
     if (velocidadeDirigindo <= limiteVia) {
       mensagem.innerHTML = `Velocidade dentro do limite. Boa direção!`;

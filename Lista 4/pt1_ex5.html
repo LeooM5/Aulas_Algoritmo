@@ -25,10 +25,10 @@
     let quantidadeDeAmigos = Number(qtdAmigos.value);
     let valorTotal = valor / quantidadeDeAmigos;
     if (valorTotal > 20) {
-      msg.innerHTML = `Cada amigo vai pagar R$${valorTotal} pela pizza`;
+      msg.innerHTML = `Cada amigo vai pagar R$${valorTotal.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} pela pizza`;
       msg2.innerHTML = `Deu ruim! Pizza muito cara!`
     } else {
-      msg.innerHTML = `Cada amigo vai pagar R$${valorTotal} pela pizza`;
+      msg.innerHTML = `Cada amigo vai pagar R$${valorTotal.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} pela pizza`;
     }
   }
 </script>

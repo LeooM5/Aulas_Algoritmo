@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <style>
+      th,
+      td {
+        text-align: center;
+      }
+
+      th {
+        padding: .5em;
+      }
+      table {
+        border: 1px solid black;
+      }
+      table {
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Controle Diário de Viagens</h1>
+    Me informe a distância percorrida em KM:
+    <input type="number" id="ipt_distancia" />
+    Me informe o valor do pedágio:
+    <input type="number" id="ipt_valorPedagio" />
+    Me informe o valor da bandeira (1,2,3):
+    <input type="number" id="ipt_valorBandeira" />
+    <button onclick="Acumular()">Acumular corrida realizada</button>
+    <div id="msg"></div>
+    <br /><br />
+    <table id="tabela">
+      <tr>
+        <th style="background-color: rgba(27, 143, 196, 0.573)">Distância</th>
+        <th style="background-color: rgba(27, 143, 196, 0.573)">Pedágio</th>
+        <th style="background-color: rgba(27, 143, 196, 0.573)">Bandeira</th>
+        <th style="background-color: rgba(250, 205, 132, 0.8)">
+          Valor Corrida
+        </th>
+        <th style="background-color: rgba(250, 205, 132, 0.8)">
+          Valor Acumulado
+        </th>
+      </tr>
+    </table>
+  </body>
+</html>
+
+<script>
+  let valorAcumulado = 0;
+  let numCorrida = 0;
+
+  function Acumular() {
+    let distancia = Number(ipt_distancia.value);
+    let pedagio = Number(ipt_valorPedagio.value);
+    let bandeira = Number(ipt_valorBandeira.value);
+    let valorCorridaAtual = 0;
+    let valorCada8 = 10;
+    let valorTotal = (distancia / 8) * valorCada8;
+    let valorDescBandeira = 0;
+    let valorDesc = 0;
+
+    if (distancia > 50) {
+      valorDesc = 0.1;
+      valorTotal = valorTotal * (1 - valorDesc);
+    }
+
+    valorTotal += pedagio;
+
+    if (bandeira == 1) {
+      valorDescBandeira = 3.5;
+      valorTotal = valorTotal * (1 - valorDescBandeira / 100);
+    } else if (bandeira == 2) {
+      valorDescBandeira = 11.7;
+      valorTotal = valorTotal * (1 + valorDescBandeira / 100);
+    } else {
+      valorDescBandeira = 22.3;
+      valorTotal = valorTotal * (1 + valorDescBandeira / 100);
+    }
+
+    valorAcumulado += valorTotal;
+
+    tabela.innerHTML += `
+    
+        <tr>
+            <td style="background-color: rgba(27, 143, 196, 0.573)">${distancia}</td>
+            <td style="background-color: rgba(27, 143, 196, 0.573)">${pedagio}</td>
+            <td style="background-color: rgba(27, 143, 196, 0.573)">${bandeira}</td>
+            <td style="background-color:rgba(250, 205, 132, 0.8);">${valorTotal.toFixed(2)}</td>
+            <td style="background-color:rgba(250, 205, 132, 0.8);">${valorAcumulado.toFixed(2)}</td>
+        </tr>
+       `;
+
+    numCorrida++;
+
+    msg.innerHTML += `<br>${numCorrida}ª corrida de ${distancia} km com valor de R$ ${valorTotal.toFixed(2)} – ACUMULADO DO DIA R$ ${valorAcumulado.toFixed(2)}`;
+  }
+</script>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    Valor:
+    <input type="text" id="ipt_valor" />
+    <br />
+    <button onclick="formatar()">Formatar</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function formatar() {
+    let valor = Number(ipt_valor.value);
+    msg.innerHTML = `${valor.toFixed(2)}`;
+  }
+</script>
