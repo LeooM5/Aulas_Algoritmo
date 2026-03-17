@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    Me informe um número:
+    <input type="number" id="ipt_numero" />
+    <button onclick="analisar()">Analisar</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  /*
+    function analisar() {
+      let numero = Number(ipt_numero.value);
+
+      if (numero >= 0) {
+        if (numero <= 10) {
+          msg.innerHTML = `O número está entre 0 e 10`;
+        } else {
+          msg.innerHTML = `O número não está entre 0 e 10`;
+        }
+      } else {
+        msg.innerHTML = `O número não está entre 0 e 10`;
+      }
+    }
+
+  function analisar() {
+    let numero = Number(ipt_numero.value);
+
+    if (numero >= 0 && numero <= 10) {
+      msg.innerHTML = `O número está entre 0 e 10`;
+    } else {
+      msg.innerHTML = `O número não está entre 0 e 10`;
+    }
+  }
+*/
+
+  function analisar() {
+    let numero = Number(ipt_numero.value);
+
+    numero >= 0 && numero <= 10
+      ? (msg.innerHTML = `O número está entre 0 e 10`)
+      : (msg.innerHTML = `O número não está entre 0 e 10`);
+  }
+</script>
