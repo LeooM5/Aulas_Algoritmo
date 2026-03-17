@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>10 Exercícios JS - Treino 1</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+        color: #333;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      h1 {
+        text-align: center;
+        padding: 30px;
+        background: #4a90e2;
+        color: white;
+        margin: 0;
+      }
+
+      .exercises-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+        gap: 30px;
+        padding: 40px;
+      }
+
+      .exercise {
+        background: #f8f9ff;
+        padding: 30px;
+        border-radius: 15px;
+        border-left: 5px solid #4a90e2;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .exercise:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .exercise h2 {
+        color: #4a90e2;
+        margin-bottom: 20px;
+        font-size: 1.4em;
+        border-bottom: 2px solid #e0e6ff;
+        padding-bottom: 10px;
+      }
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      label {
+        font-weight: 600;
+        color: #555;
+        margin-bottom: 5px;
+      }
+
+      input,
+      select {
+        padding: 12px 15px;
+        border: 2px solid #e0e6ff;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+      }
+
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: #4a90e2;
+        box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      button {
+        padding: 12px 24px;
+        background: linear-gradient(135deg, #4a90e2, #357abd);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(74, 144, 226, 0.3);
+      }
+
+      button:active {
+        transform: translateY(0);
+      }
+
+      .output {
+        background: #f0f8ff;
+        border: 2px solid #4a90e2;
+        border-radius: 8px;
+        padding: 20px;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1em;
+        font-weight: 600;
+        color: #2c5282;
+        margin-top: 20px;
+      }
+
+      .static-info {
+        background: #e6f3ff;
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 4px solid #4a90e2;
+        margin-bottom: 15px;
+        font-family: monospace;
+      }
+
+      #tasks-list {
+        list-style: none;
+        max-height: 200px;
+        overflow-y: auto;
+        background: white;
+        border: 2px solid #e0e6ff;
+        border-radius: 8px;
+        padding: 15px;
+        margin-top: 15px;
+      }
+
+      #tasks-list li {
+        padding: 10px;
+        background: #f8f9ff;
+        margin-bottom: 8px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .two-inputs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+
+      @media (max-width: 768px) {
+        .exercises-grid {
+          grid-template-columns: 1fr;
+          padding: 20px;
+        }
+
+        .two-inputs {
+          grid-template-columns: 1fr;
+        }
+
+        .btn-group {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🧠 10 Exercícios JavaScript - Treino 1</h1>
+
+      <div class="exercises-grid">
+        <div class="exercise" id="ex1">
+          <h2>1. Somar Dois Números</h2>
+          <div class="input-group">
+            <div class="two-inputs">
+              <div>
+                <label>Primeiro número:</label>
+                <input type="number" id="ex1_num1" placeholder="Ex: 5" />
+              </div>
+              <div>
+                <label>Segundo número:</label>
+                <input type="number" id="ex1_num2" placeholder="Ex: 3" />
+              </div>
+            </div>
+            <button onclick="somarNumeros()">Somar</button>
+          </div>
+          <div id="ex1_result" class="output">Resultado aparecerá aqui</div>
+        </div>
+
+        <div class="exercise" id="ex2">
+          <h2>2. Par ou Ímpar</h2>
+          <div class="input-group">
+            <div>
+              <label>Número:</label>
+              <input type="number" id="ex2_num" placeholder="Ex: 4" />
+            </div>
+            <button onclick="verificarParImpar()">Verificar</button>
+          </div>
+          <div id="ex2_result" class="output">Resultado aparecerá aqui</div>
+        </div>
+
+        <div class="exercise" id="ex3">
+          <h2>3. Aprovação de Nota</h2>
+          <div class="input-group">
+            <div>
+              <label>Nota (0-10):</label>
+              <input
+                type="number"
+                id="ex3_nota"
+                min="0"
+                max="10"
+                step="0.1"
+                placeholder="Ex: 8.5"
+              />
+            </div>
+            <button onclick="verificarAprovacao()">Verificar</button>
+          </div>
+          <div id="ex3_result" class="output">Resultado aparecerá aqui</div>
+        </div>
+
+        <div class="exercise" id="ex4">
+          <h2>4. Calculadora Simples</h2>
+          <div class="input-group">
+            <div class="two-inputs">
+              <div>
+                <label>Número 1:</label>
+                <input type="number" id="ex4_num1" placeholder="Ex: 10" />
+              </div>
+              <div>
+                <label>Número 2:</label>
+                <input type="number" id="ex4_num2" placeholder="Ex: 2" />
+              </div>
+            </div>
+            <div>
+              <label>Operação:</label>
+              <select id="ex4_operacao">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">×</option>
+                <option value="/">÷</option>
+              </select>
+            </div>
+            <button onclick="calcular()">Calcular</button>
+          </div>
+          <div id="ex4_result" class="output">Resultado aparecerá aqui</div>
+        </div>
+
+        <div class="exercise" id="ex5">
+          <h2>5. FizzBuzz até N</h2>
+          <div class="input-group">
+            <div>
+              <label>Número N:</label>
+              <input type="number" id="ex5_n" placeholder="Ex: 15" />
+            </div>
+            <button onclick="gerarFizzBuzz()">Gerar FizzBuzz</button>
+          </div>
+          <div
+            id="ex5_result"
+            class="output"
+            style="
+              white-space: pre-wrap;
+              font-family: monospace;
+              min-height: 100px;
+            "
+          >
+            Resultado aparecerá aqui
+          </div>
+        </div>
+
+        <div class="exercise" id="ex6">
+          <h2>6. Array - Soma e Pares</h2>
+          <div class="static-info">
+            Array fixo: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+          </div>
+          <div class="btn-group">
+            <button onclick="somaTotal()">Soma Total</button>
+            <button onclick="listarPares()">Listar Pares</button>
+          </div>
+          <div id="ex6_result" class="output">Clique nos botões acima</div>
+        </div>
+
+        <div class="exercise" id="ex7">
+          <h2>7. Palíndromo</h2>
+          <div class="input-group">
+            <div>
+              <label>Palavra:</label>
+              <input type="text" id="ex7_palavra" placeholder="Ex: radar" />
+            </div>
+            <button onclick="verificarPalindromo()">Verificar</button>
+          </div>
+          <div id="ex7_result" class="output">Resultado aparecerá aqui</div>
+        </div>
+
+        <div class="exercise" id="ex8">
+          <h2>8. Fatorial</h2>
+          <div class="input-group">
+            <div>
+              <label>Número N:</label>
+              <input type="number" id="ex8_n" min="0" placeholder="Ex: 5" />
+            </div>
+            <button onclick="calcularFatorial()">Calcular Fatorial</button>
+          </div>
+          <div id="ex8_result" class="output">Resultado aparecerá aqui</div>
+        </div>
+
+        <div class="exercise" id="ex9">
+          <h2>9. Inverter Array</h2>
+          <div class="static-info">Array original: [1, 2, 3, 4, 5]</div>
+          <button onclick="inverterArray()">Inverter Array</button>
+          <div id="ex9_result" class="output">Clique no botão acima</div>
+        </div>
+
+        <div class="exercise" id="ex10">
+          <h2>10. Lista de Tarefas</h2>
+          <div class="input-group">
+            <div>
+              <label>Nova tarefa:</label>
+              <input
+                type="text"
+                id="ex10_tarefa"
+                placeholder="Digite uma tarefa..."
+              />
+            </div>
+            <div class="btn-group">
+              <button onclick="adicionarTarefa()">Adicionar Tarefa</button>
+              <button onclick="limparTarefas()">Limpar Todas</button>
+            </div>
+          </div>
+          <ul id="ex10_tasks_list"></ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  function somarNumeros() {
+    let num1 = Number(ex1_num1.value);
+    let num2 = Number(ex1_num2.value);
+    let resultado = ex1_result;
+    let soma = num1 + num2;
+
+    resultado.innerHTML = `O resultado da soma é igual a ${soma}`;
+  }
+
+  function verificarParImpar() {
+    let num = Number(ex2_num.value);
+    let resultado = ex2_result;
+
+    if (num % 2 == 0) {
+      resultado.innerHTML = `O número é divisível por 2`;
+    } else {
+      resultado.innerHTML = `O número não é divisível por 2`;
+    }
+  }
+
+  function verificarAprovacao() {
+    let nota = Number(ex3_nota.value);
+    let resultado = ex3_result;
+
+    if (nota < 5) {
+      resultado.innerHTML = `Reprovado!`;
+    } else if (nota < 7) {
+      resultado.innerHTML = `Recuperação!`;
+    } else {
+      resultado.innerHTML = `Aprovado!`;
+    }
+  }
+
+  function calcular() {
+    let num1 = Number(ex4_num1.value);
+    let num2 = Number(ex4_num2.value);
+    let resultado = ex4_result;
+    let conta = ex4_operacao.value;
+
+    if (conta == "+") {
+      resultado.innerHTML = `${num1 + num2}`;
+    } else if (conta == "-") {
+      resultado.innerHTML = `${num1 - num2}`;
+    } else if (conta == "*") {
+      resultado.innerHTML = `${num1 * num2}`;
+    } else {
+      resultado.innerHTML = `${num1 / num2}`;
+    }
+  }
+
+  function gerarFizzBuzz() {
+    let num = Number(ex5_n.value);
+    let resultado = ex5_result;
+    resultado.innerHTML = ``;
+
+    for (let i = 1; i <= num; i++) {
+      if (i % 3 == 0 && i % 5 == 0) {
+        resultado.innerHTML += ` FizzBuzz `;
+      } else if (i % 3 == 0) {
+        resultado.innerHTML += ` Fizz `;
+      } else if (i % 5 == 0) {
+        resultado.innerHTML += ` Buzz `;
+      } else {
+        resultado.innerHTML += ` ${i} `;
+      }
+    }
+  }
+
+  function somaTotal() {
+    let soma = 0;
+    let resultado = ex6_result;
+    let arrayFixo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    for (let i = 0; i < arrayFixo.length; i++) {
+      soma += arrayFixo[i];
+    }
+
+    resultado.innerHTML = `${soma}`;
+  }
+
+  function listarPares() {
+    let pares = [];
+    let resultado = ex6_result;
+    let arrayFixo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    for (let i = 0; i < arrayFixo.length; i++) {
+      if (arrayFixo[i] % 2 == 0) {
+        pares.push(arrayFixo[i]);
+      }
+    }
+
+    resultado.innerHTML = `${pares}`;
+  }
+
+  function verificarPalindromo() {
+    let resultado = ex7_result;
+    let palavra = String(ex7_palavra.value);
+    palavra.toLowerCase;
+
+    // Split forma basicamente um array dividindo por meio do método que você escreve no ()
+    // Reverse inverte os arrays (apenas arrays)
+    // Join ele une os termos dos arrays por meio do método passado
+
+    let palavraContrario = palavra.split("").reverse().join("");
+
+    if (palavra === palavraContrario) {
+      resultado.innerHTML = `São palíndromos`;
+    } else {
+      resultado.innerHTML = `Não são palíndromos`;
+    }
+  }
+
+  function calcularFatorial() {
+    let numero = Number(ex8_n.value);
+    let resultado = ex8_result;
+
+    for (let i = numero - 1; i > 1; i--) {
+      numero *= i;
+    }
+
+    resultado.innerHTML = numero;
+  }
+
+  function inverterArray() {
+    const arrayOriginal = [1, 2, 3, 4, 5];
+    let arrayReverso = [];
+    let resultado = ex9_result;
+
+    for (let i = 0; i < arrayOriginal.length; i++) {
+      arrayReverso.unshift(arrayOriginal[i]);
+    }
+
+    resultado.innerHTML = arrayReverso;
+  }
+
+  function adicionarTarefa() {
+    let tarefa = ex10_tarefa.value;
+    let lista = ex10_tasks_list;
+
+    lista.innerHTML += `<br><li>${tarefa}</li>`;
+  }
+
+  function limparTarefas() {
+    let lista = ex10_tasks_list;
+    lista.innerHTML = ``;
+  }
+</script>
