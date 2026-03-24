@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Senha Forte ou Fraca</h1>
+
+    Me informe uma senha
+    <input oninput="analisar()" type="text" id="ipt_senha" />
+
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let criterios = 0;
+    let senha = String(ipt_senha.value);
+    let temMaius = senha != senha.toLowerCase();
+    let temMinus = senha != senha.toUpperCase();
+
+    if (senha.length >= 8) {
+      criterios++;
+    }
+
+    if (temMaius == true) {
+      criterios++;
+    }
+
+    if (temMinus == true) {
+      criterios++;
+    }
+
+    if (criterios == 0) {
+      msg.innerHTML = `Insegura`
+    } else if (criterios == 1) {
+      msg.innerHTML = `Fraca`
+    } else if (criterios == 2) {
+      msg.innerHTML = `Média`
+    } else {
+      msg.innerHTML = `Forte`
+    }
+  }
+  
+</script>

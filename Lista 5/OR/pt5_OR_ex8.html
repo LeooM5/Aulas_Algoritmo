@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Critérios de Preferência de Augusto Bivio</h1>
+    Informe o nome da empresa:
+    <input type="text" id="ipt_nome" />
+    Informe o valor da bolsa da empresa:
+    <input type="number" id="ipt_bolsa" />
+    Informe o valor do VR da empresa:
+    <input type="number" id="ipt_vr" />
+    Informe o tempo de deslocamento da empresa até a SPTECH:
+    <input type="number" id="ipt_tempoDeslocamento" />
+    <button onclick="analisar()">É preferida?</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let nome = ipt_nome.value;
+    let bolsa = Number(ipt_bolsa.value);
+    let vr = Number(ipt_vr.value);
+    let tempoDeslocamento = Number(ipt_tempoDeslocamento.value);
+
+    if (bolsa >= 1800 || vr >= 20 || tempoDeslocamento <= 30) {
+      msg.innerHTML = `A empresa ${nome} é uma de suas preferências`;
+    } else {
+      msg.innerHTML = `A empresa ${nome} está fora da sua lista`;
+    }
+  }
+</script>

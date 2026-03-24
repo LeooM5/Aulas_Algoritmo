@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Sistema de Login: Autentique-se para Acessar!</h1>
+    Informe o seu login:
+    <input type="text" id="ipt_login" />
+    Informe a sua senha:
+    <input type="password" id="ipt_senha" />
+    <button onclick="analisar()">Entrar</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let login = ipt_login.value;
+    let senha = ipt_senha.value;
+
+    if (login == 'SPTech' && senha == 'digital') {
+      alert(`Usuário autenticado com sucesso`);
+    } else {
+      alert(`Falha na autenticação`);
+    }
+  }
+</script>

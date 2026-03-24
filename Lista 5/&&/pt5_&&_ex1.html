@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Conforto Térmico: A Temperatura Está Ideal?</h1>
+    Informe a temperatura atual:
+    <input type="number" id="ipt_temp" />
+    <button onclick="analisar()">Ver situação</button>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let temperatura = Number(ipt_temp.value);
+    if (temperatura >= 21 && temperatura <= 24) {
+      alert(`Temperatura confortável :D`);
+    } else {
+      alert(`Temperatura DESCONFORTÁVEL :C`);
+    }
+  }
+</script>

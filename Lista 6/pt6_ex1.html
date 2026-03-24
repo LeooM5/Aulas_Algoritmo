@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Contador de Caracteres</h1>
+
+    Me informe uma frase
+    <input type="text" id="ipt_frase" />
+
+    <button onclick="analisar()">Analisar Frase</button>
+
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let frase = ipt_frase.value;
+    let tamFrase = frase.length;
+
+    msg.innerHTML = `Tamanho da Frase: ${tamFrase}<br>`;
+
+    if (tamFrase < 10) {
+      msg.innerHTML += `<span style="color: red;">Frase Curta!</span>`;
+    } else {
+      msg.innerHTML += `<span style="color: blue;">Frase longa!</span>`;
+    }
+  }
+</script>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Recarga Fidelidade Metrô: Economize com Descontos Especiais!</h1>
+    Informe a quantidade de passagens que deseja adquirir:
+    <input type="number" id="ipt_qtdPassagens" />
+    <button onclick="analisar()">Comprar</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let qtdPassagens = Number(ipt_qtdPassagens.value);
+    let valorPassagemMetro = 4.4;
+    let total = qtdPassagens * valorPassagemMetro;
+
+    if (qtdPassagens < 8 || qtdPassagens > 50) {
+      alert(`Quantidade inválida para o Fidelidade!`);
+    } else if (qtdPassagens >= 8 && qtdPassagens <= 50) {
+      if (qtdPassagens <= 19) {
+        total *= 0.97;
+      } else if (qtdPassagens <= 49) {
+        total *= 0.95;
+      } else {
+        total *= 0.93;
+      }
+      msg.innerHTML = `O valor a se pagar é igual a ${total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`;
+    }
+  }
+</script>

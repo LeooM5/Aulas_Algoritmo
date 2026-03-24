@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Aprovação Escolar: Notas e Frequência Fazem a Diferença!</h1>
+    Informe a sua nota:
+    <input type="number" id="ipt_nota" />
+    Informe a sua frequência:
+    <input type="number" id="ipt_freq" />
+    <button onclick="analisar()">Avaliar aluno</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let nota = Number(ipt_nota.value);
+    let freq = Number(ipt_freq.value);
+
+    if (nota >= 6 && freq >= 75) {
+      alert(`Parabéns! Aprovado!`);
+    } else {
+      alert(`Infelizmente, não foi desta vez`);
+    }
+  }
+</script>

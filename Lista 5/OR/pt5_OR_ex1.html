@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Juliane Joada e Suas Frutas Preferidas</h1>
+    Informe a fruta que chegou na mesa:
+    <input type="text" id="ipt_fruta" />
+    <button onclick="analisar()">Vai comer?</button>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let fruta = ipt_fruta.value;
+
+    if (fruta == 'uva' || fruta == 'abacaxi') {
+      alert(`Sim, vai comer ${fruta}`);
+    } else {
+      alert(`A fruta ${fruta} ela não come`);
+    }
+  }
+</script>

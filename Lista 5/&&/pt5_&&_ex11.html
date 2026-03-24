@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>
+      Agostinho é um taxista do Rio de Janeiro que deseja automatizar sua frota
+      de táxis (Carrara Drivers)
+    </h1>
+    Informe o nome do passageiro:
+    <input type="text" id="ipt_nomePassageiro" />
+    Informe a distancia do local atual até o destino em KM:
+    <input type="number" id="ipt_distancia" />
+    Informe o número correspondente a bandeira da corrida:
+    <input min="1" max="3" type="number" id="ipt_bandeira" />
+    Informe o horário da corrida (apenas horas inteira):
+    <input min="0" max="23" type="number" id="ipt_horario" />
+    <button onclick="analisar()">Calcular corrida</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let nomePassageiro = ipt_nomePassageiro.value;
+    let distancia = Number(ipt_distancia.value);
+    let bandeira = Number(ipt_bandeira.value);
+    let horario = Number(ipt_horario.value);
+    let valorKm = 1.25;
+    let acrescimo = 0;
+    let total = distancia * valorKm;
+
+    if (bandeira >= 1 && bandeira <= 3 && horario >= 0 && horario <= 23) {
+      if (bandeira == 1) {
+        if (horario <= 6) {
+          acrescimo = 0.05;
+        } else if (horario <= 12) {
+          acrescimo = 0.1;
+        } else {
+          acrescimo = 0.15;
+        }
+      } else if (bandeira == 2) {
+        if (horario <= 6) {
+          acrescimo = 0.1;
+        } else if (horario <= 12) {
+          acrescimo = 0.2;
+        } else {
+          acrescimo = 0.3;
+        }
+      } else {
+        if (horario <= 6) {
+          acrescimo = 0.15;
+        } else if (horario <= 12) {
+          acrescimo = 0.35;
+        } else {
+          acrescimo = 0.45;
+        }
+      }
+      total *= 1 + acrescimo;
+      msg.innerHTML = `Olá ${nomePassageiro} Sua corrida, será na bandeira ${bandeira}, percorrerá ${distancia} km e o total da corrida será de ${total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`;
+    } else {
+      alert(`Insira valores válidos`);
+    }
+  }
+</script>

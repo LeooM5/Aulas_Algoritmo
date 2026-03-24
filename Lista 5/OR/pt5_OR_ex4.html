@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Análise de Parcelamento de Compra</h1>
+    Informe seu modo de pagamento:
+    <select id="metodo_pagamento">
+      <option>Dinheiro</option>
+      <option>Cartão de débito</option>
+      <option>Cartão de crédito</option>
+      <option>Boleto</option>
+    </select>
+
+    <button onclick="analisar()">Analisar compra</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let mtdPagamento = metodo_pagamento.value;
+
+    if (mtdPagamento == 'Dinheiro' || mtdPagamento == 'Cartão de débito') {
+      msg.innerHTML = `Você terá que pagar a vista`;
+    } else {
+      msg.innerHTML = `Pagamento poderá ser parcelado`;
+    }
+  }
+</script>

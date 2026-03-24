@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Simulador de Preferências de Compras: Será que Robervaldo Gostaria?</h1>
+    Informe o tamanho da tela do celular encontrado:
+    <input type="number" id="ipt_tamanhoTela" />
+    Informe a cor do celular encontrado:
+    <select id="ipt_cor">
+      <option>Preta</option>
+      <option>Prata</option>
+      <option>Azul</option>
+      <option>Vermelho</option>
+    </select>
+    <button onclick="avaliar()">Será que ele gosta?</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function avaliar() {
+    let cor = ipt_cor.value;
+    let tamanhoTela = Number(ipt_tamanhoTela.value);
+
+    if (tamanhoTela > 6.5 && (cor == "Prata" || cor == "Preta")) {
+      msg.innerHTML = `<img src="https://img.cdndsgni.com/preview/12161359.jpg">`;
+    } else {
+      msg.innerHTML = `<img src="https://static.vecteezy.com/ti/fotos-gratis/t2/69950125-triste-emoji-baixo-humor-gratis-foto.jpg">`;
+    }
+  }
+</script>

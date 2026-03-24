@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Simulador de Preço do Bilhete Único de São Paulo</h1>
+    Informe o tipo do passageiro:
+    <select id="ipt_tipoPassageiro">
+      <option>Comum</option>
+      <option>Estudante</option>
+      <option>Idoso/PNE</option>
+    </select>
+    Informe o tipo da passagem:
+    <select id="ipt_tipoPassagem">
+      <option>Passagem única</option>
+      <option>Passagem integração</option>
+    </select>
+    <button onclick="avaliar()">Simular preço</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function avaliar() {
+    let passagemUnica = 4.4;
+    let passagemIntegracao = 5.9;
+    let tipoPassageiro = ipt_tipoPassageiro.value;
+    let tipoPassagem = ipt_tipoPassagem.value;
+    let valorPassagem = 0;
+
+    if (tipoPassageiro == "Comum" && tipoPassagem == "Passagem única") {
+      valorPassagem = passagemUnica;
+    } else if (
+      tipoPassageiro == "Comum" &&
+      tipoPassagem == "Passagem integração"
+    ) {
+      valorPassagem = passagemIntegracao;
+    } else if (
+      tipoPassageiro == "Estudante" &&
+      tipoPassagem == "Passagem única"
+    ) {
+      valorPassagem = passagemUnica * 0.5;
+    } else if (
+      tipoPassageiro == "Estudante" &&
+      tipoPassagem == "Passagem integração"
+    ) {
+      valorPassagem = passagemIntegracao * 0.5;
+    } else {
+      valorPassagem = 0;
+    }
+    msg.innerHTML = `Valor da passagem escolhida: ${valorPassagem.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`;
+  }
+</script>

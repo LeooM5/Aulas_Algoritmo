@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Jogo da Palavra Secreta</h1>
+
+    Me informe letras
+    <input type="text" id="ipt_letras" />
+
+    <button onclick="analisar()">Verificar Letras</button>
+
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let palavraSecreta = "morango";
+    let letra = ipt_letras.value;
+
+    if (palavraSecreta.includes(letra) == true) {
+      msg.innerHTML = `A letra ${letra} aparece na palavra secreta!`;
+    } else {
+      msg.innerHTML = `A letra ${letra} não aparece na palavra secreta!`;
+    }
+  }
+</script>

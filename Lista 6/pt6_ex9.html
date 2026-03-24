@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Jogo da Palavra Secreta</h1>
+
+    Me informe uma letra por vez (apenas 1 caractere).
+    <input type="text" id="ipt_letra" />
+
+    <button onclick="analisar()">Verificar Letras</button>
+
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let palavraSecreta = "morango";
+  let Ores = 2;
+  let Ares = 1;
+  let Mres = 1;
+  let Nres = 1;
+  let Gres = 1;
+  let Rres = 1;
+  let letrasTotaisRestantes = 0;
+
+  alert(
+    `Palavra secreta definida! Descubra todos os ${palavraSecreta.length} caracteres!`,
+  );
+
+  function analisar() {
+    let letra = ipt_letra.value.toLowerCase();
+    ipt_letra.value = ``;
+    ipt_letra.focus();
+
+    if (palavraSecreta.includes(letra) == true) {
+      if (letra == "o" && Ores > 0) {
+        Ores--;
+      } else if (letra == "a" && Ares > 0) {
+        Ares--;
+      } else if (letra == "m" && Mres > 0) {
+        Mres--;
+      } else if (letra == "g" && Gres > 0) {
+        Gres--;
+      } else if (letra == "n" && Nres > 0) {
+        Nres--;
+      } else if (letra == "r" && Rres > 0) {
+        Rres--;
+      }
+      letrasTotaisRestantes = Ores + Ares + Mres + Nres + Gres + Rres;
+      msg.innerHTML = `O caractere ${letra} aparece na palavra secreta! Faltam ${letrasTotaisRestantes} caracteres`;
+    } else {
+      msg.innerHTML = `O caractere ${letra} NÃO aparece na palavra secreta! Faltam ${letrasTotaisRestantes} caracteres`;
+    }
+
+    if (letrasTotaisRestantes == 0) {
+      msg.innerHTML = `Parabéns, você descobriu todas as letras da palavra secreta ${palavraSecreta}!`;
+    }
+  }
+</script>
