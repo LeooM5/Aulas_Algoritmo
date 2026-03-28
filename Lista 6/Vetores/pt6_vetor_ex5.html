@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Top Filmes Favoritos: Do Mais Amado ao Menos</h1>
+
+    Me informe os seus filmes na ordem do mais favorito para o Menos
+    <input type="text" id="ipt_filme" />
+    <button onclick="cadastrar()">Cadastrar filme</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let filmes = [];
+
+  function cadastrar() {
+    let filme = ipt_filme.value;
+    filmes.push(filme);
+
+    if (filmes.length <= 0 || filme == "") {
+      alert(`Insira filmes na lista!`);
+    } else if (filmes.length < 3) {
+      mensagem = `<br><br>Seu filme favorito: ${filmes[0]}
+    <br>Seu 3º filme favorito: Ainda não existe
+    <br>Total de filmes cadastrados: ${filmes.length} `;
+    } else {
+      mensagem = `<br><br>Seu filme favorito: ${filmes[0]}
+    <br>Seu 3º filme favorito: ${filmes[2]} 
+    <br>Total de filmes cadastrados: ${filmes.length} `;
+    }
+
+    msg.innerHTML = mensagem;
+  }
+</script>

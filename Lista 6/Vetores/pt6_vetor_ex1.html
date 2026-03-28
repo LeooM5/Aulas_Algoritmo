@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Caça às Frutas: Descubra se está na Lista</h1>
+
+    Fruta
+    <input type="text" id="ipt_fruta" />
+    <button onclick="Pesquisar()">Pesquisar</button>
+
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let frutas = ["maçã", "banana", "uva", "abacaxi"];
+  function Pesquisar() {
+    let fruta = ipt_fruta.value.toLowerCase();
+
+    if (frutas.includes(fruta)) {
+      msg.innerHTML = `A fruta ${fruta} existe na lista.`;
+    } else {
+      msg.innerHTML = `Não existe a fruta ${fruta} na lista.`;
+    }
+  }
+</script>

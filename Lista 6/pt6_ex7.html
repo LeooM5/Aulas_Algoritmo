@@ -21,7 +21,8 @@
 <script>
   function analisar() {
     let criterios = 0;
-    let senha = String(ipt_senha.value);
+    let mensagem = "";
+    let senha = ipt_senha.value;
     let temMaius = senha != senha.toLowerCase();
     let temMinus = senha != senha.toUpperCase();
 
@@ -38,14 +39,15 @@
     }
 
     if (criterios == 0) {
-      msg.innerHTML = `Insegura`
+      mensagem = `A senha é Insegura`;
     } else if (criterios == 1) {
-      msg.innerHTML = `Fraca`
+      mensagem = `A senha é Fraca`;
     } else if (criterios == 2) {
-      msg.innerHTML = `Média`
+      mensagem = `A senha é Média`;
     } else {
-      msg.innerHTML = `Forte`
+      mensagem = `A senha é Forte`;
     }
+
+    msg.innerHTML = mensagem;
   }
-  
 </script>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    Fruta:
+    <input type="text" id="ipt_fruta" /> <br />
+    <button onclick="exibir()">Exibir Lista</button>
+    <button onclick="adicionarFruta()">Adicionar Fruta</button>
+    <br />
+    <button onclick="pesquisarFruta()">Pesquisar Fruta</button>
+    <button onclick="pesquisarÍndice()">Pesquisar Índice</button>
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let frutas = ["maçã", "banana", "uva"];
+
+  function exibir() {
+    msg.innerHTML = frutas.toString().replaceAll(",", "<br>");
+  }
+  function adicionarFruta() {
+    let fruta = ipt_fruta.value;
+
+    if (fruta == "" || frutas.includes(fruta)) {
+      msg.innerHTML = `A fruta já existe ou é um caractere vazio`;
+    } else {
+      frutas.push(fruta.toLowerCase());
+    }
+  }
+
+  function pesquisarFruta() {
+    let fruta = ipt_fruta.value;
+
+    if (frutas.includes(fruta.toLowerCase())) {
+      msg.innerHTML = `Contém a fruta ${fruta} na Lista`;
+    } else {
+      msg.innerHTML = `Não contém a fruta "${fruta}" na Lista`;
+    }
+  }
+  function pesquisarÍndice() {
+    let fruta = ipt_fruta.value;
+
+    if (frutas.includes(fruta.toLowerCase())) {
+      msg.innerHTML = `A fruta ${fruta} está no índice: ${frutas.indexOf(fruta.toLowerCase())}`;
+    } else {
+      msg.innerHTML = `Não contém a fruta "${fruta}" na Lista`;
+    }
+  }
+</script>
