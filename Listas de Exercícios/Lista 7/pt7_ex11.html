@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Tabuada Colorida</h1>
+
+    Me informe a tabuada que deseja ver na tela:
+    <select id="select_tabu">
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+    </select>
+    <input type="number" id="ipt_num" />
+    <button onclick="filtrar()">Ver Tabuada</button>
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function filtrar() {
+    let cont = 0;
+    let tabu = Number(select_tabu.value);
+    let frases = ``;
+    let cor = ``;
+
+    while (cont < 12) {
+      cont++;
+      if (cont % 2 == 0) {
+        cor = `blue`;
+      } else {
+        cor = `red`;
+      }
+      frases += `<p style="color: ${cor};">${tabu} x ${cont} = ${tabu * cont}</p>`;
+    }
+
+    msg.innerHTML = frases;
+  }
+</script>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Corrida de Voltas</h1>
+
+    Me informe quantas voltas um carro dará numa corrida
+    <input type="text" id="ipt_num" />
+
+    <button onclick="iniciar()">Iniciar corrida!</button>
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function iniciar() {
+    let contador = 0;
+    let num = Number(ipt_num.value);
+    let frases = ``;
+
+    while (contador < num) {
+      contador++;
+      frases += `Carro dando a ${contador}° volta!<br>`;
+    }
+    frases += `Corrida finalizada!`;
+
+    msg.innerHTML = frases;
+  }
+</script>

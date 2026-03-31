@@ -22,12 +22,15 @@
   function cadastrar() {
     let filme = ipt_filme.value;
     filmes.push(filme);
+    let cor = ``;
 
     if (contador % 2 == 0) {
-      msg.innerHTML += `<br><span style="color: red;">${filmes[contador - 1]}</span><br>`;
+      cor = "red";
     } else {
-      msg.innerHTML += `<br><span style="color: blue;">${filmes[contador - 1]}</span><br>`;
+      cor = "blue";
     }
+
+    msg.innerHTML += `<br><span style="color: ${cor};">${filmes[contador - 1]}</span><br>`;
 
     contador++;
   }

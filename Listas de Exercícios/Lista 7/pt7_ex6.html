@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Filtro de Números Cabalísticos</h1>
+
+    <button onclick="filtrar()">Filtrar números Cabalísticos</button>
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function filtrar() {
+    let cont = 0;
+    let frases = ``;
+
+    while (cont < 30) {
+      cont++;
+
+      if (cont != 3 && cont != 4 && cont != 7 && cont != 10 && cont != 12) {
+        frases += `${cont}<br>`;
+      }
+    }
+
+    msg.innerHTML = frases;
+  }
+</script>

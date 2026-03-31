@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Dividibilidade</h1>
+
+    Me informe um intervalo crescente de valores númericos:
+    <input type="number" id="ipt_num1" />
+    <input type="number" id="ipt_num2" />
+    Me informe um número para teste de divisibilidade, ele tem que estar entre 3
+    e 13
+    <input type="number" id="ipt_teste" />
+
+    <button onclick="Divisível()">Divisível</button>
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function Divisível() {
+    let numCont = Number(ipt_num1.value);
+    let num2 = Number(ipt_num2.value);
+    let numTeste = Number(ipt_teste.value);
+    let cont = numCont;
+    let frases = ``;
+
+    if (numTeste < 3 || numTeste > 13) {
+      alert(`Insira um número de teste válido`);
+    } else {
+      while (cont < num2) {
+        if (!(cont % numTeste == 0)) {
+          frases += `${cont}<br>`;
+        }
+        cont++;
+      }
+
+      msg.innerHTML = frases;
+    }
+  }
+</script>

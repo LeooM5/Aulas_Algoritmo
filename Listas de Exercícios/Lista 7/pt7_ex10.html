@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Dividibilidade</h1>
+
+    Me informe um intervalo crescente de valores númericos:
+    <input type="number" id="ipt_num1" />
+    <input type="number" id="ipt_num2" />
+
+    <button onclick="S2Pares()">S2 Pares</button>
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function S2Pares() {
+    let numCont = Number(ipt_num1.value);
+    let num2 = Number(ipt_num2.value);
+    let numTeste = Number(ipt_teste.value);
+    let cont = numCont;
+    let frases = ``;
+
+    while (cont <= num2) {
+      if (cont % 2 == 0) {
+        frases += `${cont}<br>`;
+      }
+      cont++;
+    }
+
+    msg.innerHTML = frases;
+  }
+</script>
