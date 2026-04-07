@@ -4,8 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Documento</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   </head>
 
   <body>
@@ -26,10 +24,11 @@
     let contFrase = 1;
     let num = Number(ipt_num.value);
     let frase = String(ipt_frase.value);
+    let fraseRepetir = frase
 
     while (contFrase < num) {
+      frase += ` ${fraseRepetir}`;
       contFrase++;
-      frase += ` ${frase}`;
     }
 
     while (cont < num) {
