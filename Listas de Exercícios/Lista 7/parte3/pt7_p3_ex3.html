@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Números Primos</h1>
+
+    Informe um número:
+    <input type="number" id="ipt_num" />
+
+    <button onclick="verificar()">Verificar</button>
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function verificar() {
+    let num = Number(ipt_num.value);
+    let contador = 0;
+    let mensagem = ``;
+    let criterios = 0;
+
+    if (num < 0) {
+      alert(`Insira um número válido!`);
+    } else {
+      while (contador < num) {
+        contador++;
+        if (num % contador == 0) {
+          criterios++;
+        }
+      }
+      if (criterios == 2) {
+        mensagem = `Divisores do número ${num}: <br><br>1<br><br>${num}<br><br>É um número primo`;
+      } else {
+        mensagem = `Não é primo`;
+      }
+
+      msg.innerHTML = mensagem;
+    }
+  }
+</script>

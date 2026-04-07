@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Treino de Musculação</h1>
+
+    De quantos em quantos dias você faz Musculação
+    <input type="number" id="ipt_dias" />
+
+    <button onclick="verificar()">Exibir rotina mensal</button>
+
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function verificar() {
+    let dias = Number(ipt_dias.value);
+    let contador = 0;
+    let mensagem = ``;
+
+    if (isNaN(dias) || dias < 1) {
+      alert(`Insira um número válido`);
+    } else {
+      while (contador < 30) {
+        if (contador % dias == 0) {
+          mensagem += ` Dia ${contador + 1} - Musculação<br>`;
+        } else {1
+          mensagem += `Dia ${contador + 1} - Comer, dormir etc<br>`;
+        }
+        contador++;
+      }
+    }
+
+    msg.innerHTML = mensagem;
+  }
+</script>

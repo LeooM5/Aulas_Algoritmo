@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Um elefante, incomoda muita gente...</h1>
+
+    Me informe a quantidade de elefantes:
+    <input type="number" id="ipt_num" />
+    <button onclick="atazanar()">Atazanar a médium</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function atazanar() {
+    let num = Number(ipt_num.value);
+    let contador = 0;
+    let mensagem = ``;
+    let incomodam = "<b>incomodam,</b>";
+
+    if (num < 1 || isNaN(num)) {
+      alert(`Insira um número válido`);
+    } else {
+      while (contador < num) {
+        contador++;
+        if (contador == 1) {
+          mensagem = `${contador} elefante incomoda muita gente!<br><br>`;
+        } else {
+          incomodam += "<b>incomodam,</b>";
+          mensagem = `1 elefante incomoda muita gente!<br>${contador} elefantes ${incomodam} muito mais!<br><br>`;
+        }
+      }
+    }
+
+    msg.innerHTML = mensagem;
+  }
+</script>

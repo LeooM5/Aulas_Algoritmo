@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Divisibilidade</h1>
+
+    Informe um número positivo que será o limite da contagem:
+    <input type="number" id="ipt_num1" />
+    Informe um número para teste de Divisibilidade(entre 1 e o número anterior)
+    <input type="number" id="ipt_num2" />
+
+    <button onclick="verificar()">Somar Números</button>
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function verificar() {
+    let num1 = Number(ipt_num1.value);
+    let num2 = Number(ipt_num2.value);
+    let contador = 0;
+    let mensagem = ``;
+    let soma = 0;
+
+    if (num1 <= 0) {
+      alert(`Insira um número e/ou número para divisibilidade válido!`);
+    } else {
+      while (contador < num1) {
+        contador++;
+        if (contador % num2 == 0) {
+          soma += contador;
+          mensagem += `${contador}<br>`;
+        }
+      }
+
+      msg.innerHTML = `${mensagem}<br>Soma dos Múltiplos: ${soma}`;
+    }
+  }
+</script>

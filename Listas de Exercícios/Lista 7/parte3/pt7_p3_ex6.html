@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Divisibilidade</h1>
+
+    Informe um número para ser o limite inferior da contagem(maior 1):
+    <input type="number" id="ipt_num1" />
+    Informe um número para ser o limite superior da contagem(menor que 100 e
+    maior que o limite inferior):
+    <input type="number" id="ipt_num2" />
+    Informe um número para teste de Divisibilidade(entre 3 e 10)
+    <input type="number" id="ipt_numTeste" />
+
+    <button onclick="verificar()">Contar</button>
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function verificar() {
+    let num1 = Number(ipt_num1.value);
+    let num2 = Number(ipt_num2.value);
+    let numTeste = Number(ipt_numTeste.value);
+    let contador = num1;
+    let mensagem = ``;
+    let soma = 0;
+    let totaldenumerosexibidos = 0;
+    let arrayNums = [];
+
+    if (
+      num1 < 1 ||
+      num2 >= 100 ||
+      num2 < num1 ||
+      numTeste < 3 ||
+      numTeste > 10
+    ) {
+      alert(`Insira um intervalo e/ou número para divisibilidade válido!`);
+    } else {
+      while (contador <= num2) {
+        if (contador % numTeste == 0) {
+          totaldenumerosexibidos++;
+          soma += contador;
+          arrayNums.push(contador);
+          mensagem += `${contador}, `;
+        }
+        contador++;
+      }
+
+      msg.innerHTML = `${arrayNums.toString().replaceAll(",", ", ")}<br>QUANTIDADE TOTAL DE NÚMEROS EXIBIDOS: ${totaldenumerosexibidos}<br>
+
+      SOMATÓRIO DOS NÚMEROS EXIBIDOS: ${soma}<br>
+
+      MÉDIA DOS NÚMEROS EXIBIDOS: ${soma / totaldenumerosexibidos}<br>
+
+      MAIOR NÚMERO EXIBIDO: ${arrayNums[arrayNums.length - 1]}<br>
+
+      MENOR NÚMERO EXIBIDO: ${arrayNums[0]} `;
+    }
+  }
+</script>
