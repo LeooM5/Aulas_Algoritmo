@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+    <style>
+      #msg,
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+      }
+
+      #msg div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Doceria Gourmet</h1>
+
+      preco unidade Macarons
+      <input type="number" id="ipt_precoMacarons" /><br /><br />
+      qtd Macarons
+      <input type="number" id="ipt_qtdMacarons" /><br /><br />
+      preco unidade Brig
+      <input type="number" id="ipt_precoBrig" /><br /><br />
+      qtd Brig
+      <input type="number" id="ipt_qtdBrig" /><br /><br />
+      preco unidade Cupcake
+      <input type="number" id="ipt_precoCupcake" /><br /><br />
+      qtd Cupcake
+      <input type="number" id="ipt_qtdCupcake" /><br /><br />
+      preco unidade Cheecake
+      <input type="number" id="ipt_precoCheecake" /><br /><br />
+      qtd Cheecake
+      <input type="number" id="ipt_qtdCheecake" /><br /><br />
+
+      <button onclick="calcular()">Verificar Vendas</button>
+    </div>
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function calcular() {
+    let Macaron = `https://guiadacozinha.com.br/wp-content/uploads/2021/08/macaron-768x619.jpg`;
+    let Brig = `https://www.receitasnestle.com.br/sites/default/files/srh_recipes/1a884bcbc5b04d71476d2995d51d0140.jpg`;
+    let Cupcake = `https://www.allrecipes.com/thmb/i9KCEbxUGQ1Sa4F7Gts7SGBOpoM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/157877-vanilla-cupcakes-ddmfs-4X3-0397-59653731be1d4769969698e427d7f5bc.jpg`;
+    let Cheesecake = `https://www.seriouseats.com/thmb/VAuEFUAePPa4QXEP3dhBHA4RvJA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/20250904-SEA-WhiteChocolateCheesecake-LorenaMasso-HERO-206c88529afb4abbb2ca8f114b1d0f2b.jpg`;
+
+    let mensagem = ``;
+    let contador = 1;
+
+    let precoMacarons = Number(ipt_precoMacarons.value);
+    let qtdMacarons = Number(ipt_qtdMacarons.value);
+    let precoBrig = Number(ipt_precoBrig.value);
+    let qtdBrig = Number(ipt_qtdBrig.value);
+    let precoCupcake = Number(ipt_precoCupcake.value);
+    let qtdCupcake = Number(ipt_qtdCupcake.value);
+    let precoCheecake = Number(ipt_precoCheecake.value);
+    let qtdCheecake = Number(ipt_qtdCheecake.value);
+
+    let exibirQtdMa = qtdMacarons;
+    let exibirQtdBri = qtdBrig;
+    let exibirQtdCup = qtdCupcake;
+    let exibirQtdCheese = qtdCheecake;
+
+    let total =
+      precoMacarons * qtdMacarons +
+      precoBrig * qtdBrig +
+      precoCheecake * qtdCheecake +
+      precoCupcake * qtdCupcake;
+
+    if (
+      precoBrig >= 0 &&
+      precoCheecake >= 0 &&
+      precoCupcake >= 0 &&
+      precoMacarons >= 0
+    ) {
+      while (qtdMacarons > 0) {
+        mensagem += `<div><p>Venda ${contador} - </p> <img style="width: 100px; height: 100px;" src="${Macaron}"> - ${precoMacarons.toLocaleString("pt-Br", { style: "currency", currency: "BRL" })}</div><br><br>`;
+        qtdMacarons--;
+        contador++;
+      }
+      while (qtdBrig > 0) {
+        mensagem += `<div><p>Venda ${contador} - </p> <img <img style="width: 100px; height: 100px;" src="${Brig}"> - ${precoBrig.toLocaleString("pt-Br", { style: "currency", currency: "BRL" })}</div><br><br>`;
+        qtdBrig--;
+        contador++;
+      }
+      while (qtdCupcake > 0) {
+        mensagem += `<div><p>Venda ${contador} - </p> <img <img style="width: 100px; height: 100px;" src="${Cupcake}"> - ${precoCupcake.toLocaleString("pt-Br", { style: "currency", currency: "BRL" })}</div><br><br>`;
+        qtdCupcake--;
+        contador++;
+      }
+      while (qtdCheecake > 0) {
+        mensagem += `<div><p>Venda ${contador} - </p> <img <img style="width: 100px; height: 100px;" src="${Cheesecake}"> - ${precoCheecake.toLocaleString("pt-Br", { style: "currency", currency: "BRL" })}</div><br><br>`;
+        qtdCheecake--;
+        contador++;
+      }
+    } else {
+      alert(`Insira preço válido para todos os doces!`);
+    }
+
+    msg.innerHTML = `
+    ${mensagem}<br>
+    Com a quantidade de ${exibirQtdMa} Macarons, ${exibirQtdBri} Brigadeiros, ${exibirQtdCup} Cupcakes e ${exibirQtdCheese} Cheesecakes, a venda totalizará ${total.toLocaleString("pt-Br", { style: "currency", currency: "BRL" })}
+    `;
+  }
+</script>

@@ -23,14 +23,18 @@
 <script>
   function filtrar() {
     let cont = 0;
+    let contFrase = 1;
     let num = Number(ipt_num.value);
-    let frase = ipt_frase.value;
+    let frase = String(ipt_frase.value);
+
+    while (contFrase < num) {
+      contFrase++;
+      frase += ` ${frase}`;
+    }
 
     while (cont < num) {
       cont++;
       alert(`${frase}`);
     }
-
-    msg.innerHTML = frases;
   }
 </script>
