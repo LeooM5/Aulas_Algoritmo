@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Carona Compartilhada:</h1>
+
+    Me informe quantas pessoas vão entrar no carro:
+    <input type="number" id="ipt_num" />
+    Capacidade máxima que o veículo suporta:
+    <input type="number" id="ipt_capacidade">
+    <button onclick="partiu()">#Partiu Carona</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function partiu() {
+    let mensagem = ``;
+    let num = Number(ipt_num.value);
+    let capacidade = Number(ipt_capacidade.value);
+
+    for (let contador = 1; contador <= num; contador++) {
+      if (contador == 1) {
+        mensagem += `Entrou o ${contador}º passageiro (que é o(a) motorista)<br>`;
+      } else if (contador > capacidade) {
+        mensagem += `O ${contador}º passageiro terá que esperar!<br>`;
+      } else {
+        mensagem += `Entrou o ${contador}º passageiro<br>`;
+      }
+    }
+
+    msg.innerHTML = mensagem;
+  }
+</script>

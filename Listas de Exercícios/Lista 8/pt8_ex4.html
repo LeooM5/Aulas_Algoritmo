@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Bônus Bancário Inteligente</h1>
+
+    Me informe quantos depósitos você fez no banco:
+    <input type="number" id="ipt_qtdDepos" />
+    Me informe o valor de cada depósito:
+    <input type="number" id="ipt_valorDepos" />
+
+    <button onclick="acompanhar()">Acompanhar grana</button>
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function acompanhar() {
+    let mensagem = ``;
+    let qtdDepos = Number(ipt_qtdDepos.value);
+    let valorDepos = Number(ipt_valorDepos.value);
+    let total = valorDepos;
+    let bonus = 1.01;
+
+    for (let contador = 1; contador <= qtdDepos; contador++) {
+      if (contador % 3 == 0) {
+        total *= 1.01;
+        mensagem += `${contador}° Mês: ${total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}<br>`;
+      } else {
+        mensagem += `${contador}° Mês: ${total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}<br>`;
+      }
+      total += valorDepos;
+    }
+
+    total -= valorDepos;
+
+    msg.innerHTML = `${mensagem}<br>
+    Total Guardado: ${total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`;
+  }
+</script>

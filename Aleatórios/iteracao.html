@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <button onclick="adicionar()">Adicionar na lista</button>
+    <button onclick="verLista()">Ver lista</button>
+    <button onclick="verListaRev()">Ver lista reversa</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let lista = [];
+
+  function adicionar() {
+    lista.push(`Item ${lista.length}`);
+  }
+
+  function verLista() {
+    let mensagem = ``;
+
+    for (let contador = 0; contador < lista.length; contador++) {
+      mensagem += `${lista[contador]} <br>`;
+    }
+
+    lista.forEach((valor) => {
+      mensagem += `${valor} <br>`;
+    });
+
+    msg.innerHTML = mensagem;
+  }
+
+  function verListaRev() {
+    let mensagem = ``;
+
+    for (let contador = lista.length - 1; contador >= 0; contador--) {
+      mensagem += `${lista[contador]} <br>`;
+    }
+
+    // lista.forEach((valor) => {
+    //   mensagem += `${valor} <br>`;
+    // });
+
+    msg.innerHTML = mensagem;
+  }
+</script>

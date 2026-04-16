@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Desafio: Invasão de Impel Down</h1>
+
+    Me informe a quantidade de batalhas:
+    <input type="number" id="ipt_qtdBatalhas" /><br /><br />
+    Me informe a quantidade de marinheiros em cada batalha:
+    <input type="number" id="ipt_qtdMarinheiros" /><br /><br />
+    Me informe a quantidade de carnes disponíveis:
+    <input type="number" id="ipt_qtdCarnes" /><br /><br />
+
+    <button onclick="verificar()">Calcular</button>
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function verificar() {
+    let qtdBatalhas = Number(ipt_qtdBatalhas.value);
+    let qtdMarinheiros = Number(ipt_qtdMarinheiros.value);
+    let qtdCarnes = Number(ipt_qtdCarnes.value);
+    let auxiliarMarinheiros = qtdMarinheiros;
+
+    let energiaLuffy = 100;
+    let ptsPorBtlh = 10;
+    let ptsPMar = 5;
+    let ptsPCarne = 100;
+    let marinheirosDerrotados = 0;
+
+    let mensagem = ``;
+
+    for (let batalha = 1; batalha <= qtdBatalhas; batalha++) {
+      qtdMarinheiros = auxiliarMarinheiros;
+      energiaLuffy -= 10;
+      for (let i = 0; i <= auxiliarMarinheiros; i++) {
+        if (energiaLuffy < 5 && qtdCarnes <= 0) {
+          mensagem = `Luffy saiu derrotado!<br>`;
+          break;
+        } else {
+          if (energiaLuffy > 0 || qtdCarnes > 0) {
+            if (energiaLuffy < 5) {
+              energiaLuffy += ptsPCarne;
+              qtdCarnes--;
+            } else if (qtdMarinheiros > 0) {
+              energiaLuffy -= ptsPMar;
+              qtdMarinheiros--;
+              marinheirosDerrotados++;
+            }
+          }
+          mensagem = `Luffy saiu vitorioso!<br>`;
+        }
+      }
+    }
+
+    mensagem += `
+        Quantidade de carnes restantes: ${qtdCarnes}<br>
+        Quantidade de marinheiros derrotados: ${marinheirosDerrotados}<br>
+        Energia restante ao final das batalhas: ${energiaLuffy}
+            `;
+
+    msg.innerHTML = mensagem;
+  }
+</script>
+<!-- if (qtdMarinheiros <= 0) {
+          mensagem = `
+            Resultado: Luffy saiu vitorioso!<br>
+            Quantidade de carnes restantes: ${qtdCarnes}<br>
+            Quantidade de marinheiros derrotados: ${marinheirosDerrotados}<br>
+            Energia restante ao final das batalhas: ${energiaLuffy}`;
+        } else {
+          mensagem = `
+            Resultado: Luffy saiu derrotado!<br>
+            Quantidade de carnes restantes: ${qtdCarnes}<br>
+            Quantidade de marinheiros derrotados: ${marinheirosDerrotados}<br>
+            Energia restante ao final das batalhas: ${energiaLuffy}`;
+        } -->
