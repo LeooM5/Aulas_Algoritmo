@@ -28,6 +28,7 @@
     let qtdMarinheiros = Number(ipt_qtdMarinheiros.value);
     let qtdCarnes = Number(ipt_qtdCarnes.value);
     let auxiliarMarinheiros = qtdMarinheiros;
+    let totalMarinheiros = qtdBatalhas * qtdMarinheiros;
 
     let energiaLuffy = 100;
     let ptsPorBtlh = 10;
@@ -35,29 +36,30 @@
     let ptsPCarne = 100;
     let marinheirosDerrotados = 0;
 
-    let mensagem = ``;
+    let mensagem = `Luffy saiu derrotado!<br>`;
 
     for (let batalha = 1; batalha <= qtdBatalhas; batalha++) {
       qtdMarinheiros = auxiliarMarinheiros;
+      if (energiaLuffy < 5 && qtdCarnes <= 0) {
+        break;
+      }
       energiaLuffy -= 10;
       for (let i = 0; i <= auxiliarMarinheiros; i++) {
-        if (energiaLuffy < 5 && qtdCarnes <= 0) {
-          mensagem = `Luffy saiu derrotado!<br>`;
-          break;
-        } else {
-          if (energiaLuffy > 0 || qtdCarnes > 0) {
-            if (energiaLuffy < 5) {
-              energiaLuffy += ptsPCarne;
-              qtdCarnes--;
-            } else if (qtdMarinheiros > 0) {
-              energiaLuffy -= ptsPMar;
-              qtdMarinheiros--;
-              marinheirosDerrotados++;
-            }
+        if (energiaLuffy > 0 || qtdCarnes > 0) {
+          if (energiaLuffy < 5) {
+            energiaLuffy += ptsPCarne;
+            qtdCarnes--;
+          } else if (qtdMarinheiros > 0) {
+            energiaLuffy -= ptsPMar;
+            qtdMarinheiros--;
+            marinheirosDerrotados++;
           }
-          mensagem = `Luffy saiu vitorioso!<br>`;
         }
       }
+    }
+
+    if (marinheirosDerrotados == totalMarinheiros) {
+      mensagem = `Luffy saiu vitorioso!<br>`;
     }
 
     mensagem += `
@@ -69,16 +71,3 @@
     msg.innerHTML = mensagem;
   }
 </script>
-<!-- if (qtdMarinheiros <= 0) {
-          mensagem = `
-            Resultado: Luffy saiu vitorioso!<br>
-            Quantidade de carnes restantes: ${qtdCarnes}<br>
-            Quantidade de marinheiros derrotados: ${marinheirosDerrotados}<br>
-            Energia restante ao final das batalhas: ${energiaLuffy}`;
-        } else {
-          mensagem = `
-            Resultado: Luffy saiu derrotado!<br>
-            Quantidade de carnes restantes: ${qtdCarnes}<br>
-            Quantidade de marinheiros derrotados: ${marinheirosDerrotados}<br>
-            Energia restante ao final das batalhas: ${energiaLuffy}`;
-        } -->

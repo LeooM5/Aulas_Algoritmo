@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Desafio: Invasão de Impel Down</h1>
+
+    Cadastrar Estoque de Comidas:
+    <input type="text" id="ipt_comida" />
+    <br /><br />
+    Pesquisar comida:
+    <input type="text" id="ipt_comidaPesquisa" />
+    <br /><br />
+    Nome atual da comida:
+    <input type="text" id="ipt_nomeComida" />
+    <br /><br />
+    Nome novo para a comida:
+    <input type="text" id="ipt_nomeComidaNova" />
+    <br /><br />
+    Remover comida:
+    <input type="text" id="ipt_removerComida" />
+    <br /><br />
+    <button onclick="adicionar()">Cadastrar</button>
+    <button onclick="verificar()">Verificar Quantidade</button>
+    <button onclick="pesquisar()">Pesquisar</button>
+    <button onclick="exibirEstoque()">Exibir Estoque</button>
+    <button onclick="alterarNome()">Alterar Nome</button>
+    <button onclick="remover()">Remover Comida</button>
+
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let listaComida = [];
+  let qtdAlimentos = [];
+
+  function adicionar() {
+    let comida = ipt_comida.value;
+
+    if (listaComida.includes(comida)) {
+      let indexComida = listaComida.indexOf(comida);
+      if (!(qtdAlimentos[indexComida] == undefined)) {
+        qtdAlimentos[indexComida] = qtdAlimentos[indexComida] + 1;
+      }
+    } else {
+      listaComida.push(comida);
+      qtdAlimentos.push(1);
+    }
+  }
+
+  function verificar() {
+    let mensagem = "";
+    let soma = 0;
+    for (let i = 0; i < qtdAlimentos.length; i++) {
+      soma += qtdAlimentos[i];
+    }
+
+    if (soma < 3) {
+      mensagem = `Desse jeito, o Luffy devora até o navio`;
+    } else if (soma <= 7) {
+      mensagem = `O comilão do Luffy não vai deixar sobrar nenhuma comida`;
+    } else if (soma <= 10) {
+      mensagem = `Assim, talvez sobre um pouco para a tripulação`;
+    } else {
+      mensagem = `Desse jeito vai ter comida para todo mundo e ainda consigo guardar um pouco para a senhorita Nami!`;
+    }
+
+    msg.innerHTML = `Quantidade de Alimentos: ${soma}<br>${mensagem}`;
+  }
+
+  function pesquisar() {
+    let comidaPesquisa = ipt_comidaPesquisa.value;
+    let qtd = 0;
+    let mensagem = ``;
+
+    listaComida.includes(comidaPesquisa);
+
+    if (listaComida.includes(comidaPesquisa)) {
+      let indice = listaComida.indexOf(comidaPesquisa);
+      let quantidade = qtdAlimentos[indice];
+
+      mensagem = `Temos a comida ${comidaPesquisa} e há ${quantidade} unidade(s) dela"`;
+    } else {
+      mensagem = `Alguém vai ter que comprar ${comidaPesquisa}, tá fazendo falta...`;
+    }
+
+    msg.innerHTML = mensagem;
+  }
+
+  function exibirEstoque() {
+    let mensagem = ``;
+
+    for (let i = 0; i < qtdAlimentos.length; i++) {
+      if (qtdAlimentos[i] > 1) {
+        mensagem += `${listaComida[i]} (${qtdAlimentos[i]} unidades)<br>`;
+      } else {
+        mensagem += `${listaComida[i]} (${qtdAlimentos[i]} unidade)<br>`;
+      }
+    }
+    msg.innerHTML = mensagem;
+  }
+
+  function alterarNome() {
+    let nomeComida = ipt_nomeComida.value;
+    let nomeComidaNova = ipt_nomeComidaNova.value;
+    let mensagem = ``;
+
+    if (listaComida.includes(nomeComida)) {
+      listaComida[listaComida.indexOf(nomeComida)] = nomeComidaNova;
+      mensagem = `A comida '${nomeComida}' foi alterada para '${nomeComidaNova}'`;
+    } else {
+      mensagem = `A comida '${nomeComida}' não foi encontrada no estoque.`;
+    }
+
+    msg.innerHTML = mensagem;
+  }
+
+  function remover() {
+    let comidaParaRemover = ipt_removerComida.value;
+    let mensagem = ``;
+    if (listaComida.includes(comidaParaRemover)) {
+      let indice = listaComida.indexOf(comidaParaRemover);
+      listaComida.pop(comidaParaRemover);
+      qtdAlimentos.pop(indice);
+      mensagem = `"A comida '${comidaParaRemover}' foi removida do estoque."`;
+    } else {
+      mensagem = `A comida '${comidaParaRemover}' não está no estoque.`;
+    }
+
+    msg.innerHTML = mensagem;
+  }
+</script>
