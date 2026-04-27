@@ -126,8 +126,8 @@
     let mensagem = ``;
     if (listaComida.includes(comidaParaRemover)) {
       let indice = listaComida.indexOf(comidaParaRemover);
-      listaComida.pop(comidaParaRemover);
-      qtdAlimentos.pop(indice);
+      listaComida.splice(indice,1);
+      qtdAlimentos.splice(indice,1);
       mensagem = `"A comida '${comidaParaRemover}' foi removida do estoque."`;
     } else {
       mensagem = `A comida '${comidaParaRemover}' não está no estoque.`;
