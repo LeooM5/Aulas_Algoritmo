@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    Número Mínimo:
+    <input type="number" id="ipt_min" />
+    Número Máximo:
+    <input type="number" id="ipt_max" />
+    <button onclick="num0a10()">Número de 0 a 10</button>
+    <button onclick="numAleatorio3a10()">Número de 3 a 10</button>
+    <button onclick="numAleatorio()">Número Aleatório</button>
+    <button onclick="numAleatorioMinMax()">Número Aleatório com Mínimo e Máximo</button>
+    <div style="font-size: 10em" id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function num0a10() {
+    let numAleatorio = Math.random() * 10;
+    msg.innerHTML = numAleatorio.toFixed(0);
+  }
+  function numAleatorio3a10() {
+    let numAleatorio = Math.random() * 7 + 3;
+    msg.innerHTML = numAleatorio.toFixed(0);
+  }
+  function numAleatorio() {
+    let numAleatorio = Math.random();
+    msg.innerHTML = numAleatorio;
+  }
+  function numAleatorioMinMax() {
+    let min = Number(ipt_min.value);
+    let max = Number(ipt_max.value);
+    let numAleatorio = Math.random() * (max - min + 1) + min;
+    msg.innerHTML = Math.floor(numAleatorio);
+  }
+</script>

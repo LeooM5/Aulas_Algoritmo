@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <button onclick="sortear()">Sortear time</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function sortear() {
+    let aleatorio = Math.random();
+    let mensagem = ``;
+    if (aleatorio < 0.25) {
+      mensagem = `https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhu1t1OgOKeTO9Quj1YI44lMSfFMMUzc5BQxdHVPpLTAJwCnSG5T3T0aBoXzuO1TOofTmf5S-w_DeLzT0taZRFb0KvwIuLtC0hxkRonQnAiCiA_9VTFfgZcts_mEC0n-d_tksPMQIIPB9Q/w400-h400/Sociedade+Esportiva+Palmeiras+-+S%25C3%25A3o+Paulo-SP+-+2018.2.png`;
+    } else if (aleatorio < 0.5) {
+      mensagem = `https://down-br.img.susercontent.com/file/br-11134201-22120-g04f48qcqskv8d`;
+    } else if (aleatorio < 0.75) {
+      mensagem = `https://a.espncdn.com/i/teamlogos/soccer/500/874.png`;
+    } else {
+      mensagem = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTItkibUVxro3XBGpzYUTB2I1xbwcs9zHtFHA&s`;
+    }
+
+    msg.innerHTML = `<img height="150" src="${mensagem}">`;
+  }
+</script>

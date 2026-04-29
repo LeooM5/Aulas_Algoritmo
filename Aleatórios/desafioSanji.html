@@ -45,9 +45,7 @@
 
     if (listaComida.includes(comida)) {
       let indexComida = listaComida.indexOf(comida);
-      if (!(qtdAlimentos[indexComida] == undefined)) {
-        qtdAlimentos[indexComida] = qtdAlimentos[indexComida] + 1;
-      }
+      qtdAlimentos[indexComida] += 1;
     } else {
       listaComida.push(comida);
       qtdAlimentos.push(1);
@@ -126,8 +124,8 @@
     let mensagem = ``;
     if (listaComida.includes(comidaParaRemover)) {
       let indice = listaComida.indexOf(comidaParaRemover);
-      listaComida.splice(indice,1);
-      qtdAlimentos.splice(indice,1);
+      listaComida.splice(indice, 1);
+      qtdAlimentos.splice(indice, 1);
       mensagem = `"A comida '${comidaParaRemover}' foi removida do estoque."`;
     } else {
       mensagem = `A comida '${comidaParaRemover}' não está no estoque.`;
