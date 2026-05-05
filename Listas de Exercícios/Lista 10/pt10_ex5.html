@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Simulação</h1>
+    <button onclick="jogar()">Jogar</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let vitoriasJogador1 = 0;
+  let vitoriasJogador2 = 0;
+
+  function jogar() {
+    let imgPedra = `https://img.freepik.com/psd-gratuitas/rocha-cinzenta-isolada-em-fundo-transparente_632498-25568.jpg?semt=ais_hybrid&w=740&q=80`;
+    let imgPapel = `https://img.freepik.com/psd-gratuitas/textura-de-papel-branco-rasgado-uma-imagem-de-alta-resolucao-de-um-pedaco-rasgado-de-papel-branco-arrugado_191095-80732.jpg?semt=ais_hybrid&w=740&q=80    `;
+    let imgTesoura = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjfXMJR3ClAYaI6RV2iNUwhLTFFcZiDkGIpQ&s`;
+
+    let numAleatorio1 = Math.random();
+    let numAleatorio2 = Math.random();
+    let texto = ``;
+    let mensagem1 = ``;
+    let mensagem2 = ``;
+
+    let img1 = ``;
+    let img2 = ``;
+
+    // 0-0.333 Pedra
+    // 0.333-0.666 Papel
+    // 0.666-0.999 Tesoura
+
+    if (numAleatorio1 <= 0.333) {
+      mensagem1 = "Pedra";
+      img1 = imgPedra;
+    } else if (numAleatorio1 <= 0.666) {
+      mensagem1 = "Papel";
+      img1 = imgPapel;
+    } else {
+      mensagem1 = "Tesoura";
+      img1 = imgTesoura;
+    }
+
+    if (numAleatorio2 <= 0.333) {
+      mensagem2 = "Pedra";
+      img2 = imgPedra;
+    } else if (numAleatorio2 <= 0.666) {
+      mensagem2 = "Papel";
+      img2 = imgPapel;
+    } else {
+      mensagem2 = "Tesoura";
+      img2 = imgTesoura;
+    }
+
+    if (!(mensagem1 == mensagem2)) {
+      if (mensagem1 == "Pedra" && mensagem2 == "Papel") {
+        vitoriasJogador2++;
+        texto = `O jogador 2 venceu!<br>`;
+      } else if (mensagem1 == "Pedra" && mensagem2 == "Tesoura") {
+        vitoriasJogador1++;
+        texto = `O jogador 1 venceu!<br>`;
+      } else if (mensagem1 == "Papel" && mensagem2 == "Pedra") {
+        vitoriasJogador1++;
+        texto = `O jogador 1 venceu!<br>`;
+      } else if (mensagem1 == "Papel" && mensagem2 == "Tesoura") {
+        vitoriasJogador2++;
+        texto = `O jogador 2 venceu!<br>`;
+      } else if (mensagem1 == "Tesoura" && mensagem2 == "Pedra") {
+        vitoriasJogador2++;
+        texto = `O jogador 2 venceu!<br>`;
+      } else if (mensagem1 == "Tesoura" && mensagem2 == "Papel") {
+        vitoriasJogador1++;
+        texto = `O jogador 1 venceu!<br>`;
+      }
+    } else {
+      texto = `Houve um empate<br>`;
+    }
+
+    texto += `
+    Jogador 1: ${vitoriasJogador1} vitória(s)<br>
+    Jogador 2: ${vitoriasJogador2} vitória(s)
+    `;
+
+    msg.innerHTML = `
+    Jogador 1: <img height="200" src=${img1}> Jogador 2: <img height="200" src=${img2}><br><br>
+    ${texto}
+    `;
+  }
+</script>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <label for="ipt_filmes">Informe os filmes que mais gosta:</label>
+    <input type="text" id="ipt_filmes" />
+    <button onclick="cadastrar()">Cadastrar</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let filmes = [];
+
+  function cadastrar() {
+    let filme = ipt_filmes.value;
+    filmes.push(filme);
+    listar();
+  }
+
+  function listar() {
+    let mensagem = ``;
+    for (let i = 0; i < filmes.length; i++) {
+      mensagem += `${filmes[i]}<br>`;
+    }
+    msg.innerHTML = mensagem;
+  }
+</script>

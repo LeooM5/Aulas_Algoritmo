@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <button onclick="sortear()">Quero um número cabalístico!</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function sortear() {
+    let numRandom = (Math.random() * 14 + 1).toFixed();
+    let mensagem = `${numRandom}<br>`;
+
+    if (
+      numRandom == 3 ||
+      numRandom == 4 ||
+      numRandom == 7 ||
+      numRandom == 10 ||
+      numRandom == 12
+    ) {
+      mensagem += `Eu S2 números cabalísticos!`;
+    } else {
+      mensagem += `Ah, me dá um número bom na próxima!`;
+    }
+
+    msg.innerHTML = mensagem;
+  }
+</script>

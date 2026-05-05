@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <fieldset>
+      <legend>Informe seu nome</legend>
+      <input type="text" id="ipt_nome" />
+    </fieldset>
+    <fieldset>
+      <legend>Informe seu número da sorte</legend>
+      <input type="number" id="ipt_num" />
+    </fieldset>
+    <button onclick="sortear()">Sortear</button>
+    <div id="div_msg"></div>
+  </body>
+</html>
+
+<script>
+  let qtdSorteios = 0;
+  function sortear() {
+    let nome = ipt_nome.value;
+    let num = Number(ipt_num.value);
+    let msg = ``;
+
+    if (num >= 1 && num <= 10) {
+      let numrandom = (Math.random() * 9 + 1).toFixed();
+      qtdSorteios++;
+      if (numrandom == num) {
+        msg = `Parabéns, ${nome} você foi sorteado(a) após ${qtdSorteios} sorteios!`;
+      }
+    } else {
+      alert(`O número deve ser de 1 a 10!`);
+    }
+
+    div_msg.innerHTML = msg;
+  }
+</script>

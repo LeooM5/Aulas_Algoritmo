@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+  <p>Jogador 1: <span id="ipt_winsJogador1">0</span></p>
+  <p>Jogador 2: <span id="ipt_winsJogador2">0</span></p>
+  <p>Empate: <span id="ipt_empate">0</span></p>
+  <button onclick="sortear()">Jogar</button>
+  <div id="div_msg"></div>
+
+  <body></body>
+</html>
+
+<script>
+  let winsJogador1 = 0;
+  let winsJogador2 = 0;
+  let empates = 0;
+
+  function sortear() {
+    let numJogador1 = (Math.random() * 5 + 1).toFixed();
+    let numJogador2 = (Math.random() * 5 + 1).toFixed();
+
+    let msg = ``;
+
+    if (numJogador1 > numJogador2) {
+      winsJogador1++;
+    } else if (numJogador1 < numJogador2) {
+      winsJogador2++;
+    } else {
+      empates++;
+    }
+
+    if (winsJogador1 > winsJogador2) {
+      msg = `O jogador 1 está vencendo!`;
+    } else if (winsJogador1 < winsJogador2) {
+      msg = `O jogador 2 está vencendo!`;
+    } else {
+      msg = `A partida está empatada`;
+    }
+
+    div_msg.innerHTML = msg;
+
+    ipt_winsJogador1.innerHTML = winsJogador1;
+    ipt_winsJogador2.innerHTML = winsJogador2;
+    ipt_empate.innerHTML = empates;
+  }
+</script>

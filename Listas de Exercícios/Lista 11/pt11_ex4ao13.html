@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    Insira um número
+    <input type="number" id="ipt_numero" />
+    Informe um número para ver quantas vezes ele apararece no vetor:
+    <input type="number" id="ipt_numeroAparece" />
+    <button onclick="exibir()">Realizar Tudo</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let numerosVetor = [];
+
+  function exibir() {
+    let numero = Number(ipt_numero.value);
+    let verificarNum = Number(ipt_numeroAparece.value);
+
+    numerosVetor.push(numero);
+    msg.innerHTML = `
+      Soma dos números ${numerosVetor}:<br> ${somar(numerosVetor)}<br><br>
+      Maior número : ${maiorNumero(numerosVetor)}<br><br>
+      Menor número : ${menorNumero(numerosVetor)}<br><br>
+      Média dos números : ${mediaNumero(numerosVetor)}<br><br>
+      Números Pares : ${paresNumero(numerosVetor)}<br><br>
+      Números Ímpares : ${imparesNumero(numerosVetor)}<br><br>
+      Quantas vezes o número ${verificarNum} aparece: ${verifcarQtdNumero(numerosVetor, verificarNum)}<br><br>
+      São todos positivos: ${positivos(numerosVetor)}
+      `;
+  }
+
+  function somar(array) {
+    let soma = 0;
+    for (let i = 0; i < array.length; i++) {
+      soma += array[i];
+    }
+
+    return soma;
+  }
+
+  function maiorNumero(array) {
+    let maior = array[0];
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] > maior) {
+        maior = array[i];
+      }
+    }
+
+    return maior;
+  }
+
+  function menorNumero(array) {
+    let menor = array[0];
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] < menor) {
+        menor = array[i];
+      }
+    }
+
+    return menor;
+  }
+
+  function mediaNumero(array) {
+    let soma = 0;
+    let media = 0;
+    for (let i = 0; i < array.length; i++) {
+      soma += array[i];
+    }
+
+    media = soma / array.length;
+
+    return media;
+  }
+
+  function paresNumero(array) {
+    let pares = [];
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] % 2 == 0) {
+        pares.push(array[i]);
+      }
+    }
+
+    return pares;
+  }
+
+  function imparesNumero(array) {
+    let impares = [];
+    for (let i = 0; i < array.length; i++) {
+      if (!(array[i] % 2 == 0)) {
+        impares.push(array[i]);
+      }
+    }
+
+    return impares;
+  }
+
+  function verifcarQtdNumero(array, numVerificar) {
+    let qtd = 0;
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] == numVerificar) {
+        qtd++;
+      }
+    }
+
+    return qtd;
+  }
+
+  function positivos(array) {
+    let qtdNegativos = 0;
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] < 0) {
+        qtdNegativos++;
+      }
+    }
+
+    if (qtdNegativos > 0) {
+      return false;
+    }
+
+    return true;
+  }
+</script>

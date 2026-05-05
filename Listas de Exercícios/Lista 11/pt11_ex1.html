@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <input type="number" id="ipt_numero" />
+    <button onclick="exibir()">Verificar se é Positivo</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function verificar(n1) {
+    if (n1 >= 0) {
+      return true;
+    }
+
+    return false;
+  }
+
+  function exibir() {
+    let numero = Number(ipt_numero.value);
+    msg.innerHTML = verificar(numero);
+  }
+</script>

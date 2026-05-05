@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <button onclick="ver()">Ver a Lua</button>
+    <div id="div_msg"></div>
+  </body>
+</html>
+
+<script>
+  function ver() {
+    let dia = (Math.random() * 30 + 1).toFixed();
+
+    let msg = `${dia}<br>`;
+
+    let luaMinguante = `https://img.freepik.com/fotos-gratis/foto-aerea-closeup-da-lua-linda-a-noite_181624-5544.jpg?semt=ais_hybrid&w=740&q=80`;
+    let luaCrescente = `https://agenciagbc.com/wp-content/uploads/2025/04/lua-crescente-fases-da-lua-1-696x392.jpg`;
+    let luaCheia = `https://img.freepik.com/fotos-gratis/uma-linda-lua-cheia-cinzenta-brilhante_181624-59870.jpg`;
+    let luaNova = `https://img.freepik.com/fotos-gratis/fotografia-em-close-up-da-lua-crescente_181624-43715.jpg?semt=ais_hybrid&w=740&q=80`;
+
+    let lua = ``;
+
+    if (dia <= 7) {
+      lua = luaNova;
+    } else if (dia <= 16) {
+      lua = luaCheia;
+    } else if (dia <= 22) {
+      lua = luaMinguante;
+    } else {
+      lua = luaCrescente;
+    }
+
+    msg += `<img src="${lua}">`;
+
+    div_msg.innerHTML = msg;
+  }
+</script>

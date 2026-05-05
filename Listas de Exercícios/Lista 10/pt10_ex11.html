@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <button onclick="avaliar()">Avaliar</button>
+    <div id="div_msg"></div>
+  </body>
+</html>
+
+<script>
+  function avaliar() {
+    let numRandom = (Math.random() * 5).toFixed(1);
+
+    let mtTriste = `😭`;
+    let meioTriste = `😢`;
+    let Neutro = `😐`;
+    let Feliz = `🙂`;
+    let mtFeliz = `😁`;
+
+    let emoji = ``;
+
+    if (numRandom <= 0.5) {
+      emoji = mtTriste;
+    } else if (numRandom <= 1.5) {
+      emoji = meioTriste;
+    } else if (numRandom <= 3.5) {
+      emoji = Neutro;
+    } else if (numRandom <= 4.5) {
+      emoji = Feliz;
+    } else {
+      emoji = mtFeliz;
+    }
+
+    div_msg.innerHTML = `Nota recebida: ${numRandom} ${emoji}`;
+    div_msg.style.fontSize = "2em";
+  }
+</script>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <input type="number" id="ipt_n1" placeholder="Primeiro Número" />
+    <input type="number" id="ipt_n2" placeholder="Segundo Número" />
+
+    <button onclick="calcular()">Calcular tudo</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function soma(n1, n2) {
+    return n1 + n2;
+  }
+  function subtracao(n1, n2) {
+    return n1 - n2;
+  }
+  function multiplicacao(n1, n2) {
+    return n1 * n2;
+  }
+  function divisao(n1, n2) {
+    return n1 / n2;
+  }
+
+  function calcular() {
+    let n1 = Number(ipt_n1.value);
+    let n2 = Number(ipt_n2.value);
+
+    let somar = soma(n1, n2);
+    let subtrair = subtracao(n1, n2);
+    let multiplicar = multiplicacao(n1, n2);
+    let dividir = divisao(n1, n2);
+
+    msg.innerHTML = `
+    Entradas: ${n1}, ${n2}<br>
+    Soma: ${somar}<br>
+    Subtração: ${subtrair}<br>
+    Multiplicação: ${multiplicar}<br>
+    Divisão: ${dividir}<br>
+    `;
+  }
+</script>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <input type="text" id="ipt_texto" />
+    <button onclick="exibir()">Verificar se tem vogal</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function verificar(texto) {
+    let temVogal = 0;
+    let vogais = [];
+
+    for (let i = 0; i < texto.length; i++) {
+      if (
+        texto[i].toLowerCase() == "a" ||
+        texto[i].toLowerCase() == "e" ||
+        texto[i].toLowerCase() == "i" ||
+        texto[i].toLowerCase() == "o"
+      ) {
+        temVogal++;
+        vogais.push(texto[i]);
+      }
+    }
+
+    if (temVogal > 0) {
+      return `Vogais da palavra ${texto}: ${vogais}`;
+    }
+
+    return "Não tem vogais";
+  }
+
+  function exibir() {
+    let texto = ipt_texto.value;
+    msg.innerHTML = verificar(texto);
+  }
+</script>

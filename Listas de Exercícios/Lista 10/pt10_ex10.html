@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <button onclick="gerarNumero1()">Dado Jogador 1</button>
+    <button onclick="gerarNumero2()">Dado Jogador 2</button>
+    <button onclick="comparar()">Comparar Resultados</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let num1 = 0;
+  let num2 = 0;
+  function gerarNumero1() {
+    let numRandom = (Math.random() * 5 + 1).toFixed();
+    num1 = numRandom;
+    msg.innerHTML = `Número 1${numRandom}<br>`;
+  }
+
+  function gerarNumero2() {
+    let numRandom = (Math.random() * 5 + 1).toFixed();
+    num2 = numRandom;
+    msg.innerHTML = `Número 2${numRandom}<br>`;
+  }
+
+  function comparar() {
+    let mensagem = ``;
+    if (num1 > num2) {
+      mensagem = `Jogador 1 venceu`;
+    } else if (num1 < num2) {
+      mensagem = `Jogador 2 venceu`;
+    } else {
+      mensagem = `Houve um empate`;
+    }
+
+    msg.innerHTML = `${mensagem}`;
+  }
+</script>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <button onclick="avaliar()">Verificar Média</button>
+    <div id="div_msg"></div>
+  </body>
+</html>
+
+<script>
+  let avaliacoes = [];
+  function avaliar() {
+    let numRandom = (Math.random() * 5).toFixed(1);
+    avaliacoes.push(numRandom);
+    let mtTriste = `😭`;
+    let meioTriste = `😢`;
+    let Neutro = `😐`;
+    let Feliz = `🙂`;
+    let mtFeliz = `😁`;
+
+    let emoji = ``;
+    let soma = 0;
+
+    for (let i = 0; i < avaliacoes.length; i++) {
+      soma += Number(avaliacoes[i]);
+    }
+
+    let media = (soma / avaliacoes.length).toFixed(1);
+
+    if (media <= 0.5) {
+      emoji = mtTriste;
+    } else if (media <= 1.5) {
+      emoji = meioTriste;
+    } else if (media <= 3.5) {
+      emoji = Neutro;
+    } else if (media <= 4.5) {
+      emoji = Feliz;
+    } else {
+      emoji = mtFeliz;
+    }
+
+    div_msg.innerHTML = `Média recebida: ${media} ${emoji}`;
+    div_msg.style.fontSize = "2em";
+  }
+</script>

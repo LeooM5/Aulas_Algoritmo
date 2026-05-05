@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <div style="color: red" id="div_conteudo">
+      <h2 id="h2_titulo">Meu título</h2>
+      <p id="p_paragrafo">Meu parágrafo</p>
+    </div>
+
+    <button id="tema" onclick="mudarTema()">Tema Escuro</button>
+  </body>
+</html>
+
+<script>
+  function mudarTema() {
+    let body = document.body.style.backgroundColor;
+    console.log(body);
+    if (body == "") {
+      document.body.style.backgroundColor = "black";
+      tema.innerHTML = `Tema Claro`;
+    } else {
+      document.body.style.backgroundColor = "";
+      tema.innerHTML = `Tema Escuro`;
+    }
+  }
+</script>
