@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Controle de Contatos</h1>
+
+    Nome do contato:
+    <input type="text" id="ipt_nome" />
+    Telefone do contato:
+    <input type="number" id="ipt_tel" />
+    <button onclick="cadastrar()">Cadastrar Contato</button>
+    <button onclick="exibir()">Exibir Contatos</button>
+    De:
+    <input type="number" id="ipt_de" />
+    Até:
+    <input type="number" id="ipt_ate" />
+    <button onclick="filtrar()">Filtrar Contatos</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let contatos = [];
+
+  function cadastrar() {
+    let nome = ipt_nome.value;
+    let telefone = ipt_tel.value;
+
+    let comeco = telefone.substring(0, 2);
+    let meio = telefone.substring(2, 7);
+    let final = telefone.substring(7);
+
+    let telFormatado = `${comeco} ${meio}-${final}`;
+
+    let contato = {
+      nome: nome,
+      telefone: telFormatado,
+    };
+
+    contatos.push(contato);
+  }
+
+  function exibir() {
+    let mensagem = ``;
+    for (let i = 0; i < contatos.length; i++) {
+      mensagem += `Contato ${i + 1}<br>Nome: ${contatos[i].nome}<br> Telefone: ${contatos[i].telefone}<br><br>`;
+    }
+
+    msg.innerHTML = mensagem;
+  }
+
+  function filtrar() {
+    let de = Number(ipt_de.value) - 1;
+    let ate = Number(ipt_ate.value) - 1;
+
+    let mensagem = ``;
+
+    if (de < ate && ate < contatos.length && de >= 0 && ate >= 0) {
+      for (let i = de; i <= ate; i++) {
+        mensagem += `Contato ${i + 1}<br>Nome: ${contatos[i].nome}<br> Telefone: ${contatos[i].telefone}<br><br>`;
+      }
+    } else {
+      alert("Insira um intervalo crescente e válido!");
+    }
+
+    msg.innerHTML = mensagem;
+  }
+</script>

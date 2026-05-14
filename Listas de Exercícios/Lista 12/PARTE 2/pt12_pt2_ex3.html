@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Catálogo de Jogos</h1>
+
+    Informe o nome dos jogos que já jogou:
+    <input type="text" id="ipt_nomeJogos" />
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="exibir()">Listar Jogos</button>
+    De:
+    <input type="number" id="ipt_de" />
+    Até:
+    <input type="number" id="ipt_ate" />
+    <button onclick="filtrar()">Filtrar Jogos</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let jogos = [];
+
+  function cadastrar() {
+    let jogo = ipt_nomeJogos.value;
+
+    jogos.push(jogo);
+    msg.innerHTML = `Você já cadastrou ${jogos.length} jogos`;
+  }
+
+  function exibir() {
+    let mensagem = ``;
+    for (let i = 0; i < jogos.length; i++) {
+      mensagem += `${jogos[i]}<br>`;
+    }
+
+    msg.innerHTML = mensagem;
+  }
+
+  function filtrar() {
+    let de = Number(ipt_de.value) - 1;
+    let ate = Number(ipt_ate.value) - 1;
+
+    let mensagem = ``;
+
+    if (de < ate && ate < jogos.length && de >= 0 && ate >= 0) {
+      for (let i = de; i <= ate; i++) {
+        mensagem += `${jogos[i]}<br>`;
+      }
+    } else {
+      alert("Insira um intervalo crescente e válido!");
+    }
+
+    msg.innerHTML = mensagem;
+  }
+</script>

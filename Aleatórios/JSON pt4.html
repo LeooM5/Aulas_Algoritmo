@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    Nome:
+    <input type="text" id="ipt_nome" />
+    logradouro:
+    <input type="text" id="ipt_logradouro" />
+    Bairro:
+    <input type="text" id="ipt_bairro" />
+    Cidade:
+    <input type="text" id="ipt_cidade" />
+
+    <button onclick="adicionar()">Adicionar</button>
+    <br />
+    <br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let usuarios = [];
+
+  function adicionar() {
+    let nome = ipt_nome.value;
+    let logradouro = ipt_logradouro.value;
+    let bairro = ipt_bairro.value;
+    let cidade = ipt_cidade.value;
+
+    let usuario = {
+      nome: nome,
+      endereco: { logradouro: logradouro, bairro: bairro, cidade: cidade },
+    };
+
+    usuarios.push(usuario);
+
+    let mensagem = ``;
+
+    for (let i = 0; i < usuarios.length; i++) {
+      let atual = usuarios[i];
+      mensagem += `
+        <h3>Usuário ${i + 1}</h3>
+        Nome: ${atual.nome}<br>
+        Logradouro: ${atual.endereco.logradouro}<br>
+        Bairro: ${atual.endereco.bairro}<br>
+        Cidade: ${atual.endereco.cidade}<br><br>
+    `;
+    }
+
+    msg.innerHTML = mensagem;
+  }
+</script>

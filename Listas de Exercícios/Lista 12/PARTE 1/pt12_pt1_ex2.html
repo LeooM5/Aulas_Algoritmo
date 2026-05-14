@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Cadastro de Funcionários com Alteração de Dados</h1>
+    Informe o nome do funcionário:
+    <input type="text" id="ipt_nomeFunc" />
+    Informe o cargo do funcionário:
+    <input type="text" id="ipt_cargoFunc" />
+    Informe o salário do funcionário:
+    <input type="number" id="ipt_salarioFunc" />
+
+    <button onclick="exibir()">Cadastrar Funcionário</button>
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function exibir() {
+    let nomeFunc = ipt_nomeFunc.value;
+    let cargoFunc = ipt_cargoFunc.value;
+    let salarioFunc = Number(ipt_salarioFunc.value);
+
+    msg.innerHTML = cadastrar(nomeFunc, cargoFunc, salarioFunc);
+  }
+
+  function cadastrar(nome, cargo, salario) {
+    let funcionario = {
+      nome: nome.toUpperCase(),
+      cargo: cargo,
+      salario: salario,
+      bonus: salario * 0.1,
+    };
+
+    return `Funcionário: ${funcionario.nome}<br>Cargo: ${funcionario.cargo}<br>Salário: ${funcionario.salario.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}<br>Bônus: ${funcionario.bonus.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`;
+  }
+</script>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Cadastro de Jogos com Conversão de Texto</h1>
+    Informe o nome do jogo:
+    <input type="text" id="ipt_nomeJogo" />
+    Informe a empresa do jogo:
+    <input type="text" id="ipt_empJogo" />
+    Informe a plataforma do jogo:
+    <input type="text" id="ipt_platJogo" />
+
+    <button onclick="exibir()">Cadastrar Jogo</button>
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function exibir() {
+    let nomeJogo = ipt_nomeJogo.value;
+    let empJogo = ipt_empJogo.value;
+    let platJogo = ipt_platJogo.value;
+
+    msg.innerHTML = cadastrar(nomeJogo, empJogo, platJogo);
+  }
+
+  function cadastrar(nome, empresa, plataforma) {
+    let jogo = {
+      nome: nome.toUpperCase(),
+      empresa: empresa.toLowerCase(),
+      plataforma: plataforma,
+    };
+
+    return `Jogo: ${jogo.nome}<br>Empresa: ${jogo.empresa}<br>Plataforma: ${jogo.plataforma} anos`;
+  }
+</script>

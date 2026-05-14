@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Cadastro de Carros com Remoção de Atributos</h1>
+    Informe a marca do carro:
+    <input type="text" id="ipt_marcaCarro" />
+    Informe o modelo do carro:
+    <input type="text" id="ipt_modeloCarro" />
+    Informe o ano do carro:
+    <input type="number" id="ipt_anoCarro" />
+
+    <button onclick="exibir()">Cadastrar Carro</button>
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function exibir() {
+    let marcaCarro = ipt_marcaCarro.value;
+    let modeloCarro = ipt_modeloCarro.value;
+    let anoCarro = Number(ipt_anoCarro.value);
+
+    msg.innerHTML = cadastrar(marcaCarro, modeloCarro, anoCarro);
+  }
+
+  function cadastrar(marca, modelo, ano) {
+    let carro = {
+      marca: marca,
+      modelo: modelo,
+      ano: ano,
+      idade: 2026 - ano,
+    };
+
+    delete carro.ano;
+
+    console.log(carro);
+
+    return `Marca: ${carro.marca}<br>Modelo: ${carro.modelo}<br>Idade do Carro: ${carro.idade} anos`;
+  }
+</script>

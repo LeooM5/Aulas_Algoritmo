@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Cadastro de Usuários do Sistema</h1>
+
+    Nome:
+    <input type="text" id="ipt_nome" />
+    Idade:
+    <input type="number" id="ipt_idade" />
+    Cargo:
+    <input type="text" id="ipt_cargo" />
+    <button onclick="cadastrar()">Cadastrar Usuário</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let usuarios = [];
+
+  function cadastrar() {
+    let nome = ipt_nome.value;
+    let idade = Number(ipt_idade.value);
+    let cargo = ipt_cargo.value;
+
+    let usuario = {
+      nome: nome,
+      idade: idade,
+      cargo: cargo,
+    };
+
+    if (cargo.toLowerCase() == "administrador") {
+      usuario.acesso = `Total`;
+    } else {
+      usuario.acesso = `Limitado`;
+    }
+
+    usuarios.push(usuario);
+
+    msg.innerHTML = exibir(usuarios);
+  }
+
+  function exibir(vetor) {
+    let mensagem = ``;
+    for (let i = 0; i < vetor.length; i++) {
+      mensagem += `Usuário: ${vetor[i].nome}<br> Cargo: ${vetor[i].cargo}<br> Nível de acesso: ${vetor[i].acesso}<br><br>`;
+    }
+
+    return mensagem;
+  }
+</script>

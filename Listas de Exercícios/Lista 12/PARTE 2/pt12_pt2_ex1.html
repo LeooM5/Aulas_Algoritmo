@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Caixa de Músicas</h1>
+
+    Informe o nome de cada música que mais gosta:
+    <input type="text" id="ipt_musica" />
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="exibir()">Exibir</button>
+    De:
+    <input type="number" id="ipt_de" />
+    Até:
+    <input type="number" id="ipt_ate" />
+    <button onclick="filtrar()">Filtrar</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let musicas = [];
+
+  function cadastrar() {
+    let musica = ipt_musica.value;
+
+    musicas.push(musica);
+  }
+
+  function exibir() {
+    msg.innerHTML = musicas.toString().replaceAll(",", "<br>");
+  }
+
+  function filtrar() {
+    let de = Number(ipt_de.value) - 1;
+    let ate = Number(ipt_ate.value) - 1;
+
+    let mensagem = ``;
+
+    if (de < ate && ate < musicas.length && de >= 0 && ate >= 0) {
+      for (let i = de; i <= ate; i++) {
+        mensagem += `${musicas[i]}<br>`;
+      }
+    } else {
+      alert("Insira um intervalo crescente e válido!");
+    }
+
+    msg.innerHTML = mensagem;
+  }
+</script>

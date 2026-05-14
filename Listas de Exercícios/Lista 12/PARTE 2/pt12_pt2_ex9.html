@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Catálogo de Cursos</h1>
+
+    Nome do Curso:
+    <input type="text" id="ipt_nome" />
+    Valor do Curso:
+    <input type="number" id="ipt_valor" />
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="exibir()">Exibir Cursos</button>
+    De:
+    <input type="number" id="ipt_de" />
+    Até:
+    <input type="number" id="ipt_ate" />
+    <button onclick="filtrar()">Filtrar Cursos</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let cursos = [];
+
+  function cadastrar() {
+    let nome = ipt_nome.value;
+    let valor = Number(ipt_valor.value);
+
+    let curso = {
+      nome: nome,
+      valor: valor,
+    };
+
+    cursos.push(curso);
+  }
+
+  function exibir() {
+    let mensagem = `Total de cursos Cadastrados: ${cursos.length}<br>`;
+    for (let i = 0; i < cursos.length; i++) {
+      mensagem += `Curso de: ${cursos[i].nome}<br> Valor do Curso: ${cursos[i].valor}<br><br>`;
+    }
+
+    msg.innerHTML = mensagem;
+  }
+
+  function filtrar() {
+    let de = Number(ipt_de.value) - 1;
+    let ate = Number(ipt_ate.value) - 1;
+
+    let mensagem = `Total de cursos Cadastrados: ${cursos.length}<br>`;
+
+    if (de < ate && ate < cursos.length && de >= 0 && ate >= 0) {
+      for (let i = de; i <= ate; i++) {
+        mensagem += `Curso de: ${cursos[i].nome}<br> Valor do Curso: ${cursos[i].valor}<br><br>`;
+      }
+    } else {
+      alert("Insira um intervalo crescente e válido!");
+    }
+
+    msg.innerHTML = mensagem;
+  }
+</script>

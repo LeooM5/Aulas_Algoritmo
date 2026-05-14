@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Registro de Produtos</h1>
+
+    Informe o preço do produto:
+    <input type="number" id="ipt_precoProd" />
+    Informe o nome do produto:
+    <input type="text" id="ipt_nomeProd" />
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="exibir()">Atualizar Estoque</button>
+    <select id="select_filtros">
+      <option value="acima">Preços acima de</option>
+      <option value="menor">Preços abaixo de</option>
+    </select>
+    Valor:
+    <input type="number" id="ipt_valorComSelect" />
+    <button onclick="filtrar()">Filtrar Produtos</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let produtos = [];
+
+  function cadastrar() {
+    let precoProd = Number(ipt_precoProd.value);
+    let nomeProd = ipt_nomeProd.value;
+
+    if (precoProd >= 0 && nomeProd.length > 3) {
+      let produto = {
+        nome: nomeProd,
+        preco: precoProd,
+      };
+      produtos.push(produto);
+      msg.innerHTML = `Registrado com sucesso`;
+    } else {
+      msg.innerHTML = `Não registrado, nome deve ter mais de 3 letras e preço deve ser positivo.`;
+    }
+  }
+
+  function exibir() {
+    let mensagem = `Você tem ${produtos.length} produtos cadastrados em estoque:<br>`;
+
+    let valorTotal = 0;
+
+    for (let i = 0; i < produtos.length; i++) {
+      mensagem += `${i + 1}. ${produtos[i].nome} - R$${produtos[i].preco}<br>`;
+      valorTotal += produtos[i].preco;
+    }
+
+    mensagem += `Seu estoque vale R$${valorTotal}`;
+
+    msg.innerHTML = mensagem;
+  }
+
+  function filtrar() {
+    let filtros = select_filtros.value;
+    let valorComSelect = ipt_valorComSelect.value;
+    let mensagem = ``;
+
+    if (filtros == "acima") {
+      for (let i = 0; i < produtos.length; i++) {
+        if (produtos[i].preco > valorComSelect) {
+          mensagem += `${i + 1}. ${produtos[i].nome} - R$${produtos[i].preco}<br>`;
+        }
+      }
+    } else if (filtros == "menor") {
+      for (let i = 0; i < produtos.length; i++) {
+        if (produtos[i].preco < valorComSelect) {
+          mensagem += `${i + 1}. ${produtos[i].nome} - R$${produtos[i].preco}<br>`;
+        }
+      }
+    } else {
+      alert("Selecione se é acima ou abaixo de!");
+    }
+
+    msg.innerHTML = mensagem;
+  }
+</script>

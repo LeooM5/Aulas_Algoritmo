@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <!-- JSON - JavaScript Object Notation
+    Notação de Objetos JavaScript
+    Notação - Simbologia ou representação de algo
+
+    Objeto = forma de representar algo -->
+
+    <h3>Usuário 1</h3>
+    Nome: <input type="text" id="ipt_nome1" /> <br />
+    Email: <input type="email" id="ipt_email1" /><br />
+
+    <h3>Usuário 2</h3>
+    Nome: <input type="text" id="ipt_nome2" /> <br />
+    Email: <input type="email" id="ipt_email2" /><br />
+    <button onclick="exibir()">Exibir</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function exibir() {
+    let nome1 = ipt_nome1.value;
+    let email1 = ipt_email1.value;
+
+    let nome2 = ipt_nome2.value;
+    let email2 = ipt_email2.value;
+
+    if (nome1 != "" && email1 != "" && nome2 != "" && email2 != "") {
+      msg.innerHTML = armazenar([
+        [nome1, email1],
+        [nome2, email2],
+      ]);
+    } else {
+      alert("Insira valores válidos");
+    }
+  }
+
+  function armazenar(dados) {
+    let usuarios = [
+      { nome: dados[0][0], email: dados[0][1] },
+      { nome: dados[1][0], email: dados[1][1] },
+    ];
+
+    let msg = `<h3>Informações do usuário</h3> <br>
+    Nome do Usuário 1: ${usuarios[0].nome}<br> Email do Usuário 1: ${usuarios[0].email}<br>
+    Nome do Usuário 2: ${usuarios[1].nome}<br> Email do Usuário 2: ${usuarios[1].email}<br>
+    `;
+    return msg;
+  }
+</script>

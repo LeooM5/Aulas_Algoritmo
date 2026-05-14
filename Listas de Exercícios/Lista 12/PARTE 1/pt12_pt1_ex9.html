@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Cadastro de Viagens com Destino Internacional</h1>
+    Informe o destino:
+    <input type="text" id="ipt_destino" />
+    Informe o preço da viagem:
+    <input type="number" id="ipt_precoViagem" />
+    Informe a quantidade de dias:
+    <input type="number" id="ipt_qtdDias" />
+
+    <button onclick="exibir()">Cadastrar Viagem</button>
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function exibir() {
+    let destino = ipt_destino.value;
+    let precoViagem = Number(ipt_precoViagem.value);
+    let qtdDias = Number(ipt_qtdDias.value);
+
+    msg.innerHTML = cadastrar(destino, precoViagem, qtdDias);
+  }
+
+  function cadastrar(dest, preco, dias) {
+    let viagem = {
+      dest: dest,
+      preco: preco,
+      dias: dias,
+    };
+
+    if (preco > 5000) {
+      viagem.tipo = `Internacional Premium`;
+    } else {
+      viagem.tipo = `Viagem Nacional`;
+    }
+
+    return `Destino: ${viagem.dest}<br>Preço: ${viagem.preco}<br>Dias: ${viagem.dias}<br>Tipo: ${viagem.tipo}`;
+  }
+</script>

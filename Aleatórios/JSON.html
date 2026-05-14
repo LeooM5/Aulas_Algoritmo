@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <!-- JSON - JavaScript Object Notation
+    Notação de Objetos JavaScript
+    Notação - Simbologia ou representação de algo
+
+    Objeto = forma de representar algo -->
+
+    <h3>Usuário</h3>
+    Nome: <input type="text" id="ipt_nome" /> <br />
+    Email: <input type="email" id="ipt_email" /><br />
+    <button onclick="exibir()">Exibir</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function exibir() {
+    let nome = ipt_nome.value;
+    let email = ipt_email.value;
+
+    if (nome != "" && email != "") {
+      msg.innerHTML = armazenar([nome, email]);
+    } else {
+      alert("Insira valores válidos");
+    }
+  }
+
+  function armazenar(dados) {
+    let usuario = {
+      nome: dados[0],
+      email: dados[1],
+    };
+
+    let msg = `<h3>Informações do usuário</h3> <br> Nome: ${usuario.nome}<br> Email: ${usuario.email}`;
+    return msg;
+  }
+</script>

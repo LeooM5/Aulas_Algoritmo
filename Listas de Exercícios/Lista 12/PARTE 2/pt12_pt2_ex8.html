@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Registro de Despesas Mensais</h1>
+
+    Nome da despesa:
+    <input type="text" id="ipt_despesa" />
+    Valor:
+    <input type="number" id="ipt_valor" />
+    <button onclick="cadastrar()">Cadastrar Despesa</button>
+    <button onclick="exibir()">Resumo das Despesas</button>
+    Filtrar por valor:
+    <input type="number" id="ipt_filtro" />
+    <select id="select_filtros">
+      <option value="acima">Maior que</option>
+      <option value="menor">Menor que</option>
+    </select>
+    <button onclick="filtrar()">Filtrar Despesas</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let despesas = [];
+
+  function cadastrar() {
+    let nome = ipt_despesa.value;
+    let valor = Number(ipt_valor.value);
+
+    let despesa = {
+      nome: nome,
+      valor: valor,
+    };
+
+    despesas.push(despesa);
+  }
+
+  function exibir() {
+    let mensagem = ``;
+    for (let i = 0; i < despesas.length; i++) {
+      mensagem += `Despesa: ${despesas[i].nome}<br> Valor da Despesa: ${despesas[i].valor}<br><br>`;
+    }
+
+    msg.innerHTML = mensagem;
+  }
+
+  function filtrar() {
+    let filtrar = Number(ipt_filtro.value);
+    let opcao = select_filtros.value;
+
+    let mensagem = ``;
+
+    if (filtrar > 0 && opcao == "acima") {
+      for (let i = 0; i < despesas.length; i++) {
+        let valor = despesas[i].valor;
+        if (valor > filtrar) {
+          mensagem += `Despesa: ${despesas[i].nome}<br> Valor da Despesa: ${despesas[i].valor}<br><br>`;
+        }
+      }
+    } else if (opcao == "menor") {
+      for (let i = 0; i < despesas.length; i++) {
+        let quantidade = despesas[i].valor;
+        if (quantidade < filtrar) {
+          mensagem += `Despesa: ${despesas[i].nome}<br> Valor da Despesa: ${despesas[i].valor}<br><br>`;
+        }
+      }
+    } else {
+      alert("Insira um valor válido!");
+    }
+
+    msg.innerHTML = mensagem;
+  }
+</script>

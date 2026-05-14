@@ -6,30 +6,21 @@ class Celular {
   }
 }
 
+class teste extends Celular {
+  constructor(a, b, c) {
+    super(a, b, c);
+    this.a = a;
+    this.b = b;
+    this.c = c;
+    this.ram = 10;
+    this.processador = "teste";
+    this.armazenamento = 5
+  }
+}
+
+let oi = new teste(1, 1, 1);
+
 const S24Ultra = new Celular(12, "Snapadragon 8 Gen 3", 256);
 
 console.log(S24Ultra);
-
-let array = [];
-
-let objeto = {};
-
-console.log(array);
-console.log(objeto);
-
-let frutas = ["banana", "tomate", "cereja", "maça", "abacaxi"];
-console.log(frutas);
-let frutasArmazenas = frutas;
-console.log(frutasArmazenas);
-frutas.unshift("kiwi");
-console.log(frutas);
-console.log(frutasArmazenas);
-
-let n1 = 0;
-console.log(n1);
-let n2 = n1
-console.log(n2);
-
-n1 += 2;
-console.log(n1);
-console.log(n2);
+console.log(oi);

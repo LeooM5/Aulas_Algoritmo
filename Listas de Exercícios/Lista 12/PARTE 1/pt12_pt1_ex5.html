@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Cadastro de Alunos com Situação Escolar</h1>
+    Informe o nome do aluno:
+    <input type="text" id="ipt_nomeAluno" />
+    Informe a nota do aluno:
+    <input type="number" id="ipt_notaAluno" />
+    Informe a frequência do aluno:
+    <input type="number" id="ipt_freqAluno" />
+
+    <button onclick="exibir()">Analisar Aluno</button>
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function exibir() {
+    let nomeAluno = ipt_nomeAluno.value;
+    let notaAluno = Number(ipt_notaAluno.value);
+    let freqAluno = Number(ipt_freqAluno.value);
+
+    msg.innerHTML = cadastrar(nomeAluno, notaAluno, freqAluno);
+  }
+
+  function cadastrar(nome, nota, freq) {
+    let aluno = {
+      nome: nome,
+      nota: nota,
+      frequencia: freq,
+      situacao: situacao,
+    };
+
+    if (nota >= 6 && freq >= 75) {
+      aluno.situacao = `Aprovado`;
+    } else {
+      aluno.situacao = `Reprovado`;
+    }
+
+    return `Filme: ${aluno.nome}<br>Nota: ${aluno.nota}<br>Frequência: ${aluno.frequencia}<br>Situação: ${aluno.situacao}`;
+  }
+</script>

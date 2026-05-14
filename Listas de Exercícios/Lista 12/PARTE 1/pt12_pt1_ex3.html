@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Cadastro de Produtos com Atualização de Estoque</h1>
+    Informe o nome do produto:
+    <input type="text" id="ipt_nomeProd" />
+    Informe a quantidade em estoque do produto:
+    <input type="number" id="ipt_qtdProd" />
+    Informe o preço do produto:
+    <input type="number" id="ipt_precoProd" />
+
+    <button onclick="exibir()">Cadastrar Produto</button>
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function exibir() {
+    let nomeProd = ipt_nomeProd.value;
+    let qtdProd = Number(ipt_qtdProd.value);
+    let precoProd = Number(ipt_precoProd.value);
+
+    msg.innerHTML = cadastrar(nomeProd, qtdProd, precoProd);
+  }
+
+  function cadastrar(nome, qtd, preco) {
+    let estoque = {
+      nome: nome,
+      quantidade: qtd + 10,
+      preco: preco,
+      valorTotal: (qtd + 10) * preco,
+    };
+
+    return `Produto: ${estoque.nome}<br>Quantidade Atualizada: ${estoque.quantidade}<br>Preço Unitário: ${estoque.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}<br>Valor Total: ${estoque.valorTotal.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`;
+  }
+</script>

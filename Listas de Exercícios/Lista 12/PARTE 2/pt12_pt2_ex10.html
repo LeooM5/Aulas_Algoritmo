@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Cadastro de Animais de Estimação</h1>
+
+    Nome do Pet:
+    <input type="text" id="ipt_nome" />
+    Espécie do Pet:
+    <input type="text" id="ipt_especie" />
+    <button onclick="cadastrar()">Cadastrar Animal</button>
+    <button onclick="exibir()">Listar Animais</button>
+    Filtrar por espécie:
+    <input type="text" id="ipt_filtro" />
+    <button onclick="filtrar()">Filtrar Animais</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let pets = [];
+
+  function cadastrar() {
+    let nome = ipt_nome.value;
+    let especie = ipt_especie.value;
+
+    let pet = {
+      nome: nome,
+      especie: especie,
+    };
+
+    pets.push(pet);
+  }
+
+  function exibir() {
+    let mensagem = `Total de pet Cadastrados: ${pets.length}<br>`;
+    for (let i = 0; i < pets.length; i++) {
+      mensagem += `Nome do Pet: ${pets[i].nome}<br> Espécie do Pet: ${pets[i].especie}<br><br>`;
+    }
+
+    msg.innerHTML = mensagem;
+  }
+
+  function filtrar() {
+    let filtro = ipt_filtro.value;
+
+    let mensagem = `Total de pets Cadastrados: ${pets.length}<br>`;
+
+    if (filtro) {
+      for (let i = 0; i < pets.length; i++) {
+        if (pets[i].especie == filtro) {
+          mensagem += `Nome do Pet: ${pets[i].nome}<br> Espécie do Pet: ${pets[i].especie}<br><br>`;
+        }
+      }
+    } else {
+      alert("Insira um intervalo crescente e válido!");
+    }
+
+    msg.innerHTML = mensagem;
+  }
+</script>

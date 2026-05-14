@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Registro de Alimentos</h1>
+
+    Informe o nome do alimento:
+    <input type="text" id="ipt_nomeAlimento" />
+    Informe a quantidade do alimento:
+    <input type="text" id="ipt_qtdAlimento" />
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="exibir()">Atualizar Lista</button>
+    Filtrar por quantidade:
+    <input type="number" id="ipt_filtro" />
+    <select id="select_filtros">
+      <option value="acima">Maior que</option>
+      <option value="menor">Menor que</option>
+    </select>
+    <button onclick="filtrar()">Filtrar Alimentos</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let alimentos = [];
+
+  function cadastrar() {
+    let nomeAlimento = ipt_nomeAlimento.value;
+    let qtdAlimento = Number(ipt_qtdAlimento.value);
+
+    let alimento = {
+      nome: nomeAlimento,
+      qtd: Number(qtdAlimento),
+    };
+
+    if (nomeAlimento.length > 3 && qtdAlimento > 0) {
+      alimentos.push(alimento);
+      msg.innerHTML = `Registrado com sucesso!`;
+    } else {
+      msg.innerHTML = `Você deve colocar um nome e quantidade de alimento válido!`;
+    }
+  }
+
+  function exibir() {
+    let mensagem = `Você tem ${alimentos.length} alimentos cadastrados:<br>`;
+    for (let i = 0; i < alimentos.length; i++) {
+      mensagem += `${alimentos[i].nome} - ${alimentos[i].qtd} unidades<br>`;
+    }
+
+    msg.innerHTML = mensagem;
+  }
+
+  function filtrar() {
+    let filtrar = Number(ipt_filtro.value);
+    let opcao = select_filtros.value;
+
+    let mensagem = ``;
+
+    if (filtrar > 0 && opcao == "acima") {
+      for (let i = 0; i < alimentos.length; i++) {
+        let quantidade = alimentos[i].qtd;
+        if (quantidade > filtrar) {
+          mensagem += `${alimentos[i].nome} - ${quantidade} unidades<br>`;
+        }
+      }
+    } else if (opcao == "menor") {
+      for (let i = 0; i < alimentos.length; i++) {
+        let quantidade = alimentos[i].qtd;
+        if (quantidade < filtrar) {
+          mensagem += `${alimentos[i].nome} - ${quantidade} unidades<br>`;
+        }
+      }
+    } else {
+      alert("Insira uma quantidade válida!");
+    }
+
+    msg.innerHTML = mensagem;
+  }
+</script>

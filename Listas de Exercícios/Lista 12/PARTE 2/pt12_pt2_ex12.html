@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Catálogo de Filmes</h1>
+
+    Nome do filme:
+    <input type="text" id="ipt_nome" />
+    Gênero do filme:
+    <input type="text" id="ipt_genero" />
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="exibir()">Listar Filmes</button>
+    De:
+    <input type="number" id="ipt_de" />
+    Até:
+    <input type="number" id="ipt_ate" />
+    <button onclick="filtrarPorIndice()">Filtrar Filmes por Registro</button>
+    Filtrar por gênero:
+    <input type="text" id="ipt_filtro" />
+    <button onclick="filtrarPorGenero()">Filtrar Filmes por Gênero</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let filmes = [];
+
+  function cadastrar() {
+    let nome = ipt_nome.value;
+    let genero = ipt_genero.value;
+
+    let filme = {
+      nome: nome,
+      genero: genero,
+    };
+
+    filmes.push(filme);
+  }
+
+  function exibir() {
+    let mensagem = `Você já assistiu ${filmes.length} filmes<br>`;
+    for (let i = 0; i < filmes.length; i++) {
+      mensagem += `Nome do filme: ${filmes[i].nome}<br> Gênero do filme: ${filmes[i].genero}<br><br>`;
+    }
+
+    msg.innerHTML = mensagem;
+  }
+
+  function filtrarPorIndice() {
+    let de = Number(ipt_de.value) - 1;
+    let ate = Number(ipt_ate.value) - 1;
+
+    let mensagem = `Você já assistiu ${filmes.length} filmes<br>`;
+
+    if (de < ate && ate < filmes.length && de >= 0 && ate >= 0) {
+      for (let i = de; i <= ate; i++) {
+        mensagem += `Nome do filme: ${filmes[i].nome}<br> Gênero do filme: ${filmes[i].genero}<br><br>`;
+      }
+    } else {
+      alert("Insira um intervalo crescente e válido!");
+    }
+
+    msg.innerHTML = mensagem;
+  }
+
+  function filtrarPorGenero() {
+    let filtro = ipt_filtro.value;
+
+    let mensagem = `Você já assistiu ${filmes.length} filmes<br>`;
+
+    if (filtro) {
+      for (let i = 0; i < filmes.length; i++) {
+        if (filmes[i].genero == filtro) {
+          mensagem += `Nome do filme: ${filmes[i].nome}<br> Gênero do filme: ${filmes[i].genero}<br><br>`;
+        }
+      }
+    } else {
+      alert("Insira um intervalo crescente e válido!");
+    }
+
+    msg.innerHTML = mensagem;
+  }
+</script>

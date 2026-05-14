@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Cadastro de Celulares com Desconto</h1>
+    Informe a marca do celular:
+    <input type="text" id="ipt_marcaCelular" />
+    Informe o modelo do celular:
+    <input type="text" id="ipt_modeloCelular" />
+    Informe o preço do celular:
+    <input type="number" id="ipt_precoCelular" />
+
+    <button onclick="exibir()">Cadastrar Celular</button>
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function exibir() {
+    let marcaCelular = ipt_marcaCelular.value;
+    let modeloCelular = ipt_modeloCelular.value;
+    let precoCelular = Number(ipt_precoCelular.value);
+
+    msg.innerHTML = cadastrar(marcaCelular, modeloCelular, precoCelular);
+  }
+
+  function cadastrar(marca, modelo, preco) {
+    let celular = {
+      marca: marca,
+      modelo: modelo,
+      preco: preco,
+    };
+
+    celular.desconto = preco * 0.85;
+
+    return `Marca: ${celular.marca}<br>Modelo: ${celular.modelo}<br>Preço Original: ${celular.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}<br>Preço com Desconto: ${celular.desconto.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`;
+  }
+</script>

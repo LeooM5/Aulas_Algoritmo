@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Agenda de Eventos</h1>
+
+    Nome do evento:
+    <input type="text" id="ipt_nome" />
+    Data do Evento:
+    <input type="date" id="ipt_data" />
+    Local do Evento:
+    <input type="text" id="ipt_local" />
+    <button onclick="cadastrar()">Cadastrar Evento</button>
+    <button onclick="exibir()">Exibir Agenda</button>
+    De:
+    <input type="number" id="ipt_de" />
+    Até:
+    <input type="number" id="ipt_ate" />
+    <button onclick="filtrar()">Filtrar Agenda</button>
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let eventos = [];
+
+  function cadastrar() {
+    let nome = ipt_nome.value;
+    let data = ipt_data.value;
+    let local = ipt_local.value;
+
+    let evento = {
+      nome: nome,
+      data: data,
+      local: local,
+    };
+
+    eventos.push(evento);
+  }
+
+  function exibir() {
+    let mensagem = `Total de eventos Cadastrados: ${eventos.length}<br>`;
+    for (let i = 0; i < eventos.length; i++) {
+      mensagem += `Nome do evento: ${eventos[i].nome}<br> Data do evento: ${eventos[i].data}<br> Local do evento: ${eventos[i].local}<br><br>`;
+    }
+
+    msg.innerHTML = mensagem;
+  }
+
+  function filtrar() {
+    let de = Number(ipt_de.value) - 1;
+    let ate = Number(ipt_ate.value) - 1;
+
+    let mensagem = `Total de eventos Cadastrados: ${eventos.length}<br>`;
+
+    if (de < ate && ate < eventos.length && de >= 0 && ate >= 0) {
+      for (let i = de; i <= ate; i++) {
+        mensagem += `Nome do evento: ${eventos[i].nome}<br> Data do evento: ${eventos[i].data}<br> Local do evento: ${eventos[i].local}<br><br>`;
+      }
+    } else {
+      alert("Insira um intervalo crescente e válido!");
+    }
+
+    msg.innerHTML = mensagem;
+  }
+</script>

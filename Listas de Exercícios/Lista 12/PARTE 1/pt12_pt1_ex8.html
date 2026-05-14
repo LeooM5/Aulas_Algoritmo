@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Cadastro de Comprador e Produto</h1>
+    Informe o nome do comprador:
+    <input type="text" id="ipt_nomeComprador" />
+    Informe o email do comprador:
+    <input type="text" id="ipt_emailComprador" />
+    Informe o nome do produto:
+    <input type="text" id="ipt_nomeProd" />
+    Informe o valor do produto:
+    <input type="number" id="ipt_valorProd" />
+
+    <button onclick="exibir()">Finalizar Compra</button>
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function exibir() {
+    let nomeComprador = ipt_nomeComprador.value;
+    let emailComprador = ipt_emailComprador.value;
+    let nomeProd = ipt_nomeProd.value;
+    let valorProd = Number(ipt_valorProd.value);
+
+    msg.innerHTML = cadastrar(
+      nomeComprador,
+      emailComprador,
+      nomeProd,
+      valorProd,
+    );
+  }
+
+  function cadastrar(nomeComprador, emailComprador, nomeProd, valor) {
+    let comprador = {
+      nome: nomeComprador,
+      email: emailComprador,
+    };
+
+    let produto = {
+      nome: nomeProd,
+      valor: valor,
+    };
+
+    console.log(comprador);
+    console.log(produto);
+
+    return `Comprador: ${comprador.nome} | ${comprador.email}<br>Produto: ${produto.nome}<br>Valor: ${produto.valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`;
+  }
+</script>

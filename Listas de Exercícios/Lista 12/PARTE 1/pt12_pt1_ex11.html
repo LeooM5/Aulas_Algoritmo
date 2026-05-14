@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Cadastro de Usuários com Nível de Acesso</h1>
+    Informe o nome:
+    <input type="text" id="ipt_nome" />
+    Informe a idade:
+    <input type="number" id="ipt_idade" />
+    Informe o cargo:
+    <input type="text" id="ipt_cargo" />
+
+    <button onclick="exibir()">Cadastrar Usuário</button>
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  function exibir() {
+    let nome = ipt_nome.value;
+    let idade = Number(ipt_idade.value);
+    let cargo = ipt_cargo.value;
+
+    msg.innerHTML = cadastrar(nome, idade, cargo);
+  }
+
+  function cadastrar(nome, idade, cargo) {
+    let usuario = {
+      nome: nome,
+      idade: idade,
+      cargo: cargo,
+    };
+
+    if (cargo == "Administrador") {
+      usuario.acesso = `Total`;
+    } else {
+      usuario.acesso = `Limitado`;
+    }
+
+    return `Usuário: ${usuario.nome}<br>Cargo: ${usuario.cargo}<br>Nível de acesso: ${usuario.acesso}`;
+  }
+</script>
