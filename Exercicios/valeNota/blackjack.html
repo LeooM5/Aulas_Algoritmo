@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    <h1>Sete e Meio</h1>
+    <button onclick="jogar()">Jogar Sete e Meio</button>
+    <button style="display: none" id="aparecer1" onclick="jogarNovamente()">
+      Pedir Outra Carta
+    </button>
+    <button style="display: none" id="aparecer2" onclick="passarVez()">
+      Passar Vez
+    </button>
+    <br /><br />
+    <div id="msg"></div>
+  </body>
+</html>
+
+<script>
+  let cartasEValores = [
+    { carta: "Ás", valor: 1 },
+    { carta: 2, valor: 2 },
+    { carta: 3, valor: 3 },
+    { carta: 4, valor: 4 },
+    { carta: 5, valor: 5 },
+    { carta: 6, valor: 6 },
+    { carta: 7, valor: 7 },
+    { carta: "Valete", valor: 0.5 },
+    { carta: "Rainha", valor: 0.5 },
+    { carta: "Rei", valor: 0.5 },
+  ];
+
+  let cartasLista = [
+    {
+      naipe: "Copas",
+      cartas: cartasEValores,
+    },
+    {
+      naipe: "Espadas",
+      cartas: cartasEValores,
+    },
+    {
+      naipe: "Ouros",
+      cartas: cartasEValores,
+    },
+    {
+      naipe: "Paus",
+      cartas: cartasEValores,
+    },
+  ];
+
+  let somaJogador = 0;
+  let somaBanca = 0;
+  let jogoFinalizado = false;
+
+  function jogar() {
+    jogoFinalizado = false;
+    let naipe = Number(Math.random() * 3).toFixed();
+    let carta = Number(Math.random() * 9).toFixed();
+
+    aparecer1.style.display = "block";
+    aparecer2.style.display = "block";
+
+    let mensagem = ``;
+
+    mensagem = `
+      Jogador: <br>
+      (${cartasLista[naipe].cartas[carta].valor} pontos) - ${cartasLista[naipe].cartas[carta].carta} de ${cartasLista[naipe].naipe}`;
+
+    somaJogador = cartasLista[naipe].cartas[carta].valor;
+    somaBanca = 0;
+
+    msg.innerHTML = mensagem;
+  }
+
+  function jogarNovamente() {
+    let naipe = Number(Math.random() * 3).toFixed();
+    let carta = Number(Math.random() * 9).toFixed();
+
+    let mensagem = ``;
+    somaJogador += cartasLista[naipe].cartas[carta].valor;
+
+    if (somaJogador > 7.5) {
+      mensagem = `O JOGADOR ESTOUROU! A banca venceu com ${somaBanca} pontos`;
+      somaJogador = 0;
+      jogoFinalizado = true;
+    } else if (somaJogador == 7.5) {
+      mensagem = `SETE E MEIO! O jogador venceu com 7.5 pontos!`;
+      somaJogador = 0;
+      jogoFinalizado = true;
+    } else {
+      mensagem = `
+      Quero mais uma carta! <br>
+      (${somaJogador} pontos) - ${cartasLista[naipe].cartas[carta].carta} de ${cartasLista[naipe].naipe}`;
+    }
+
+    msg.innerHTML = mensagem;
+  }
+
+  function passarVez() {
+    let aleatorio1 = Number(Math.random() * 3).toFixed();
+    let aleatorio2 = Number(Math.random() * 9).toFixed();
+    let mensagem = ``;
+
+    somaBanca += cartasLista[aleatorio1].cartas[aleatorio2].valor;
+
+    if (somaBanca > 7.5) {
+      mensagem = `A BANCA ESTOUROU! O jogador venceu com ${somaJogador} pontos!`;
+      somaBanca = 0;
+      jogoFinalizado = true;
+    } else if (somaBanca == 7.5) {
+      mensagem = `SETE E MEIO! A banca venceu com 7.5 pontos!`;
+      somaBanca = 0;
+      jogoFinalizado = true;
+    } else if (somaBanca > somaJogador) {
+      mensagem = `A banca venceu com ${somaBanca} pontos!`;
+      somaBanca = 0;
+      jogoFinalizado = true;
+    } else if (somaBanca < somaJogador) {
+      mensagem = `
+          É necessário virar outra carta para a banca!<br>
+        (${somaBanca} pontos) - ${cartasLista[aleatorio1].cartas[aleatorio2].carta} de ${cartasLista[aleatorio1].naipe}
+          `;
+    } else {
+      mensagem = `
+      Banca: <br>
+      (${somaBanca} pontos) - ${cartasLista[aleatorio1].cartas[aleatorio2].carta} de ${cartasLista[aleatorio1].naipe}
+    `;
+    }
+
+    msg.innerHTML = mensagem;
+
+    if (somaBanca < somaJogador && !jogoFinalizado) {
+      setTimeout(passarVez, 2000);
+    }
+  }
+</script>

@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento</title>
+  </head>
+
+  <body>
+    Nome do astronauta:
+    <input type="text" id="ipt_nomeAstronauta" /><br /><br />
+    Nome do planeta da viagem:
+    <input type="text" id="ipt_nomePlaneta" /><br /><br />
+    Tempo relativo no planeta (a Terra é N vezes mais rápida):
+    <input type="number" id="ipt_tempoRel" /><br /><br />
+    Quantidade de dias da viagem:
+    <input type="number" id="ipt_diasViagem" /><br /><br />
+    Quantidade de horas da viagem:
+    <input type="number" id="ipt_qtdHrs" /><br /><br />
+    Quantidade de minutos da viagem:
+    <input type="number" id="ipt_minViagem" /><br /><br />
+
+    <button onclick="registrar()">Registrar viagem</button>
+    <button onclick="relatorio()">Relatório de viagens</button>
+    <button onclick="consultar()">Consultar Astronauta</button>
+    <br /><br />
+    <div id="mensagem"></div>
+  </body>
+</html>
+
+<script>
+  let viagens = [];
+
+  function registrar() {
+    if (
+      ipt_nomeAstronauta.value != "" &&
+      ipt_nomePlaneta.value != "" &&
+      ipt_tempoRel.value > 0 &&
+      (ipt_diasViagem.value > 0 ||
+        ipt_qtdHrs.value > 0 ||
+        ipt_minViagem.value > 0)
+    ) {
+      let nomeAstronauta = ipt_nomeAstronauta.value;
+      let nomePlaneta = ipt_nomePlaneta.value;
+      let tempoRel = Math.floor(Number(ipt_tempoRel.value));
+      let diasViagem = Number(ipt_diasViagem.value);
+      let qtdHrs = Number(ipt_qtdHrs.value);
+      let minViagem = Number(ipt_minViagem.value);
+
+      let viagemPara = {
+        nomeAstronauta,
+        nomePlaneta,
+        tempoRel,
+        diasViagem,
+        qtdHrs,
+        minViagem,
+      };
+
+      viagens.push(viagemPara);
+    } else {
+      alert(
+        "Preencha os campos corretamente e informe um tempo de viagem válido!",
+      );
+    }
+  }
+
+  function relatorio() {
+    let msg = `<h3>Foram registradas ${viagens.length} viagens, detalhadas a seguir:</h3>`;
+    let tempoEmAnos = 0;
+
+    for (let i = 0; i < viagens.length; i++) {
+      tempoEmAnos = (
+        (viagens[i].minViagem * viagens[i].tempoRel +
+          viagens[i].diasViagem * 1440 * viagens[i].tempoRel +
+          viagens[i].qtdHrs * 60 * viagens[i].tempoRel) /
+        525600
+      ).toFixed(1);
+
+      let qual = `./bart_imagens/bart_skull.png`;
+
+      if (tempoEmAnos <= 13) {
+        qual = `./bart_imagens/bart_kid.png`;
+      } else if (tempoEmAnos <= 30) {
+        qual = `./bart_imagens/bart_teenager.png`;
+      } else if (tempoEmAnos <= 65) {
+        qual = `./bart_imagens/bart_adult.png`;
+      } else if (tempoEmAnos <= 100) {
+        qual = `./bart_imagens/bart_old.png`;
+      }
+
+      msg += `
+        Viagem ${i + 1}:<br>
+        Astronauta ${viagens[i].nomeAstronauta} ficou fora por pelo menos ${tempoEmAnos} anos no tempo da Terra.<br>
+        A criança que nasceu quando ele saiu provavelmente está assim hoje:<br>
+        <img "width=500" "height:500" src="${qual}">
+        <br><br>`;
+    }
+
+    mensagem.innerHTML = msg;
+  }
+
+  function consultar() {
+    let astronautaParaPesquisar = prompt(
+      "Informe o nome do astronauta a ser pesquisado:",
+    );
+
+    let qtdViagensAstronauta = 0;
+
+    for (let i = 0; i < viagens.length; i++) {
+      if (viagens[i].nomeAstronauta == astronautaParaPesquisar) {
+        qtdViagensAstronauta++;
+      }
+    }
+
+    if (qtdViagensAstronauta == 0) {
+      alert(
+        `O astronauta ${astronautaParaPesquisar} não tem viagens registradas`,
+      );
+    } else if (qtdViagensAstronauta == 1) {
+      let tempoNaTerraEmMinutos = 0;
+      let indiceAstronauta;
+
+      for (let i = 0; i < viagens.length; i++) {
+        if (viagens[i].nomeAstronauta == astronautaParaPesquisar) {
+          indiceAstronauta = i;
+          break;
+        }
+      }
+      tempoNaTerraEmMinutos =
+        viagens[indiceAstronauta].minViagem *
+          viagens[indiceAstronauta].tempoRel +
+        viagens[indiceAstronauta].diasViagem *
+          1440 *
+          viagens[indiceAstronauta].tempoRel +
+        viagens[indiceAstronauta].qtdHrs *
+          60 *
+          viagens[indiceAstronauta].tempoRel;
+
+      mensagem.innerHTML = `Astronauta ${astronautaParaPesquisar} viajou para o planeta ${viagens[indiceAstronauta].nomePlaneta} com o tempo na terra de ${tempoNaTerraEmMinutos} minutos`;
+    } else {
+      let msg = `Astronauta ${astronautaParaPesquisar} viajou para:<br>`;
+
+      let tempoNaTerraEmMinutos = 0;
+
+      for (let i = 0; i < viagens.length; i++) {
+        tempoNaTerraEmMinutos =
+          viagens[i].minViagem * viagens[i].tempoRel +
+          viagens[i].diasViagem * 1440 * viagens[i].tempoRel +
+          viagens[i].qtdHrs * 60 * viagens[i].tempoRel;
+
+        msg += `${i + 1}ª viagem - planeta ${viagens[i].nomePlaneta} com o tempo na terra de ${tempoNaTerraEmMinutos} minutos<br>`;
+      }
+
+      mensagem.innerHTML = msg;
+    }
+  }
+</script>
